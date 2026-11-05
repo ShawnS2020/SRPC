@@ -1,0 +1,193 @@
+/* Shared: tokens, reset, footer structure. Page skins live in doctrine.css / worship.css. */
+:root {
+  --site-nav-h: 72px;
+  --site-gutter: clamp(1.25rem, 5vw, 4rem);
+  --primary: #0a2521;
+  /* --primary: #211a14; */
+  --secondary: #a5ff9f;
+  /* --secondary: #7be2ae; */
+  /* --his-panel: #2c231b; */
+  --paper: #f5f5f3;
+  /* --paper: #e8e6e2; */
+  /* --paper: #ebe6dc; */
+  --his-accent: #9b3d22;
+  --accent: #225a9b;
+  --accent-deep: #173f6e;
+  /* Text colors: every page's `color:` values come from these. */
+  --text: #1a1517;
+  --text-accent: var(--teal);
+  --text-muted: #4d5553;
+  --text-light: #fff;
+  --text-light-muted: rgba(255, 255, 255, 0.86);
+  /* Palette: every other color on the site comes from these. */
+  --teal: #1c5b53;
+  --surface: #fff;
+  --black: #000;
+  --stone: #e8e6e2;
+  --panel-dark: #1b2c2a;
+  --night: #030b0a;
+  --night-2: #061614;
+  --primary-tint-1: #14433c;
+  --primary-tint-2: #113a33;
+  --primary-tint-3: #103731;
+  --primary-tint-4: #0d2d28;
+  --secondary-soft: rgba(165, 255, 159, 0.5);
+  --secondary-faint: rgba(165, 255, 159, 0.05);
+  /* Lines and tints */
+  --rule: rgba(26, 21, 23, 0.2);
+  --rule-light: rgba(255, 255, 255, 0.24);
+  --rule-light-strong: rgba(255, 255, 255, 0.4);
+  --hover-tint: rgba(0, 0, 0, 0.08);
+  --hover-tint-light: rgba(255, 255, 255, 0.1);
+  --wash: #d0ebdf;
+  /* --accent: #e3a847; /* Amber. */
+  --brass: #d4b05a;
+  --banner-gold: #f3de1a; /* lettering on the blue banner illustration */
+  --his-light: #f1eadf;
+  --display: "Libre Caslon Text", Georgia, serif;
+  --display-secondary: "Instrument Serif", Georgia, serif;
+  /* --display: "Fraunces", Georgia, serif; */
+  --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* --sans: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; */
+  /* --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif; */
+}
+
+/* ---------- Themes ----------
+   :root above is the default "Evergreen" theme. Each theme below overrides only the palette;
+   js/theme.js sets <html data-theme="..."> and provides the picker in the corner. */
+
+:root[data-theme="oxblood"] {
+  --primary: #832732;
+  --oxblood: #2b0d12;
+  --paper: #f5f5f3;
+  --stone: #e8e6e2;
+  --text: #1a1517;
+  /* Derived from the five colors above */
+  --secondary: #f4cf9a;
+  --secondary-soft: rgba(244, 207, 154, 0.5);
+  --secondary-faint: rgba(244, 207, 154, 0.05);
+  --teal: #9b3441;
+  --text-muted: #5b5052;
+  --panel-dark: var(--oxblood);
+  --night: #160609;
+  --night-2: #210a0f;
+  --primary-tint-1: #6e2029;
+  --primary-tint-2: #5e1b23;
+  --primary-tint-3: #561920;
+  --primary-tint-4: #44131a;
+  --wash: #f3e3e1;
+}
+
+/* ---------- Theme picker ---------- */
+
+.site-theme {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 60;
+  font: 600 0.85rem var(--sans);
+  color: var(--text);
+}
+
+.site-theme__toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.site-theme__toggle:focus-visible,
+.site-theme__menu label:has(:focus-visible) {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.site-theme__swatches {
+  display: inline-flex;
+}
+
+.site-theme__swatches i {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+}
+
+.site-theme__swatches i + i {
+  margin-left: -0.35rem;
+}
+
+.site-theme__menu {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 12rem;
+  margin: 0;
+  padding: 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.site-theme__menu legend {
+  float: left;
+  width: 100%;
+  padding: 0.25rem 0.5rem 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.site-theme__menu label {
+  clear: both;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.5rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+
+.site-theme__menu label:hover {
+  background: var(--hover-tint);
+}
+
+.site-theme__menu input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-theme__menu label:has(:checked)::after {
+  content: "\2713";
+  margin-left: auto;
+  color: var(--primary);
+}
+
+@media print {
+  .site-theme { display: none; }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; }
+
+a {
+  color: inherit;
+}
+
+.site-footer { padding: 3.5rem var(--site-gutter); font-size: 0.95rem; line-height: 1.5; }
+.site-footer__inner { width: min(100%, 70rem); margin-inline: auto; display: grid; grid-template-columns: 1fr auto; gap: 1.5rem 3rem; align-items: start; }
+.site-footer p { margin: 0; }
+.site-footer__name { font-weight: 700; font-size: 1.25rem; }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin: 0; padding: 0; list-style: none; font-weight: 600; }
+.site-footer__copy { grid-column: 1 / -1; padding-top: 1.5rem; border-top: 1px solid rgba(0, 0, 0, 0.2); }
+@media (max-width: 760px) { .site-footer__inner { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

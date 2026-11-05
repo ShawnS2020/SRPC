@@ -1,0 +1,205 @@
+/* Scriptural Doctrine page. Everything is scoped by .page-doctrine, --doc-* variables, or .doctrine-* classes. */
+.page-doctrine {
+  /* --doc-primary: #103933; */
+  --doc-primary: var(--text-accent);
+  --doc-secondary: var(--primary);
+  --doc-stone: var(--stone);
+  /* --doc-stone: #ebe6dc; */
+  --doc-serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --wor-display: "Instrument Serif", Georgia, serif;
+  font-family: var(--display);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--paper);
+}
+:where(.page-doctrine) a { color: inherit; }
+
+/* ---------- Footer skin ---------- */
+.page-doctrine .site-footer { background: var(--wash); color: var(--text); font-family: var(--sans); }
+.page-doctrine .site-footer__name { font-family: var(--display); }
+
+/* =========================================================
+   Page
+   ========================================================= */
+.doctrine-wrap {
+  width: min(100%, 70rem);
+  margin-inline: auto;
+}
+
+/* ---------- Header ---------- */
+
+.doctrine-hero {
+  position: relative;
+  min-height: min(78vh, 52rem);
+  padding: clamp(4rem, 9vw, 8rem) var(--site-gutter);
+  background: var(--doc-secondary);
+  color: var(--text-light);
+}
+
+.doctrine-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.doctrine-hero h1 {
+  margin: 4rem 0 1.75rem;
+  font: 400 clamp(3rem, 7vw, 6rem) / 0.95 var(--wor-display);
+  letter-spacing: -0.025em;
+}
+
+.doctrine-hero h1 em {
+  color: var(--secondary);
+}
+
+.doctrine-hero .lede {
+  max-width: 40rem;
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--text-light-muted);
+}
+
+/* ---------- Westminster Assembly painting (full-bleed background) ---------- */
+
+.doctrine-art {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.doctrine-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+/* Dark overlay keeps the white title and navbar text legible */
+
+.doctrine-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* background: linear-gradient(
+    to bottom,
+    rgba(43, 13, 18, 0.88) 0,
+    rgba(43, 13, 18, 0.6) 40%,
+    rgba(43, 13, 18, 0.85) 100%
+  ); */
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--primary) 88%, transparent) 0,
+    color-mix(in srgb, var(--primary) 60%, transparent) 40%,
+    color-mix(in srgb, var(--primary) 85%, transparent) 100%
+  );
+}
+
+.doctrine-art figcaption {
+  position: absolute;
+  z-index: 2;
+  right: max(var(--site-gutter), calc((100% - 80rem) / 2));
+  bottom: clamp(2.5rem, 6vw, 5rem);
+  max-width: 22rem;
+  font: 500 0.8rem/1.5 var(--sans);
+  color: var(--text-light-muted);
+  text-align: right;
+}
+
+.doctrine-art cite { font-style: italic; }
+
+/* Shown only if the image file isn't found */
+.doctrine-art.is-missing img { display: none; }
+.doctrine-art.is-missing figcaption::before {
+  content: "Image missing: add assets/images/westminster-assembly.jpg";
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .doctrine-hero { padding-bottom: 6.5rem; }
+
+  .doctrine-art figcaption {
+    left: var(--site-gutter);
+    right: var(--site-gutter);
+    bottom: 1.25rem;
+    max-width: none;
+    text-align: left;
+  }
+}
+
+/* ---------- Doctrine ---------- */
+
+.doctrine-body {
+  padding: clamp(4rem, 9vw, 8rem) var(--site-gutter);
+  background: var(--paper);
+  color: var(--text);
+}
+
+.doctrine-lede {
+  max-width: 42rem;
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  line-height: 1.5;
+}
+
+.doctrine-solas {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.doctrine-solas li {
+  display: grid;
+  grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  gap: 0.5rem 3rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.doctrine-solas strong {
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+  line-height: 1.1;
+  color: var(--text-accent);
+}
+
+.doctrine-solas span {
+  max-width: 36rem;
+  align-self: center;
+}
+
+.doctrine-creed {
+  max-width: 44rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.doctrine-creed p { margin: 0; }
+
+.doctrine-creed a {
+  color: var(--text-accent);
+  text-underline-offset: 3px;
+}
+
+.doctrine-creed a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.doctrine-body a:focus-visible,
+.page-doctrine .site-footer a:focus-visible {
+  outline: 2px solid var(--doc-primary);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .doctrine-solas li { grid-template-columns: 1fr; }
+}
+

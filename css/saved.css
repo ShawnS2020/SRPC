@@ -1,0 +1,1272 @@
+/* How Can I Be Saved? page. Everything is scoped by .page-saved, --sav-* variables, or .saved-* classes.
+   The page is one long sky: midnight at the top, darkest at "Can I save myself?", dawn at "But God", day after. */
+.page-saved {
+  --sav-em: var(--secondary);
+  --sav-scarlet: color-mix(in srgb, var(--his-accent) 62%, var(--surface));
+  --sav-sun: #fff7e2;
+  font: 400 1.0625rem/1.75 var(--display);
+  color: var(--text);
+  background: var(--night);
+}
+
+/* ---------- Footer skin ---------- */
+
+.page-saved .site-footer {
+  background: var(--wash);
+  font-family: var(--sans);
+}
+
+.page-saved .site-footer__name {
+  font-family: var(--display);
+}
+
+/* ---------- Shared pieces ---------- */
+
+.saved-wrap {
+  position: relative;
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.saved-section {
+  position: relative;
+  padding: clamp(5rem, 11vw, 9rem) var(--site-gutter);
+}
+
+.saved-kicker {
+  margin: 0 0 1.25rem;
+  font: 600 0.8rem var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--secondary-soft);
+}
+
+.saved-h2 {
+  margin: 0 0 2.5rem;
+  font: 400 clamp(2.75rem, 7vw, 5.5rem)/1 var(--display-secondary);
+  letter-spacing: -0.015em;
+}
+
+.saved-h2 em,
+.saved-the-question em,
+.saved-answer em {
+  color: var(--sav-em);
+}
+
+.saved-prose {
+  max-width: 44rem;
+  margin: 0 0 1.5rem;
+}
+
+.saved-prose p {
+  margin: 0 0 1.5rem;
+}
+
+.saved-prose--light {
+  color: var(--text-light-muted);
+}
+
+.saved-prose--lead {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.6;
+}
+
+.page-saved main a {
+  text-underline-offset: 3px;
+}
+
+.page-saved main a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.page-saved cite {
+  display: block;
+  margin-top: 0.75rem;
+  font: 600 0.8rem var(--sans);
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.saved-big-verse {
+  max-width: 56rem;
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
+  font: 400 clamp(2rem, 4.6vw, 3.5rem)/1.15 var(--display-secondary);
+}
+
+/* Scroll reveal. Only hidden when JS is running, so content never disappears without it. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Hero: midnight ---------- */
+
+.saved-hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 100svh;
+  padding: calc(var(--site-nav-h) + 3rem) var(--site-gutter) 6rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 78% 12%, var(--primary-tint-4), transparent 70%),
+    linear-gradient(to bottom, var(--night), var(--night-2));
+  color: var(--text-light);
+}
+
+.saved-sky {
+  position: absolute;
+  inset: 0;
+  transform: translateY(calc(var(--sky-shift, 0) * 1px));
+}
+
+.saved-sky__stars {
+  position: absolute;
+  inset: -20% 0 0;
+  background-repeat: repeat;
+  animation: saved-twinkle 6s ease-in-out infinite alternate;
+}
+
+.saved-sky__stars--far {
+  background-size: 263px 241px;
+  background-image:
+    radial-gradient(1px 1px at 23px 41px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 87px 12px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 141px 97px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 201px 33px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 59px 163px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 173px 201px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 241px 141px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 113px 223px, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 9px 109px, #fff 50%, transparent 51%);
+  opacity: 0.55;
+}
+
+.saved-sky__stars--near {
+  background-size: 419px 383px;
+  background-image:
+    radial-gradient(1.5px 1.5px at 61px 77px, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 307px 49px, var(--his-light) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 197px 251px, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 373px 317px, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 131px 353px, var(--secondary) 50%, transparent 51%);
+  animation-duration: 4.3s;
+  animation-delay: -2s;
+}
+
+@keyframes saved-twinkle {
+  from { opacity: 0.35; }
+  to { opacity: 0.9; }
+}
+
+/* A crescent: an inset shadow on a transparent disc. */
+.saved-sky__moon {
+  position: absolute;
+  top: 17%;
+  right: 13%;
+  width: 1em;
+  height: 1em;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  border-radius: 50%;
+  box-shadow: inset -0.24em 0.1em 0 0 var(--his-light);
+  filter: drop-shadow(0 0 1.25rem rgba(241, 234, 223, 0.35));
+  transform: rotate(-12deg);
+}
+
+.saved-hero__inner {
+  position: relative;
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.saved-hero h1 {
+  margin: 0 0 2rem;
+  font: 400 clamp(3.75rem, 12vw, 9.5rem)/0.92 var(--display-secondary);
+  letter-spacing: -0.025em;
+}
+
+.saved-hero h1 > * {
+  display: inline-block;
+  animation: saved-rise 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.saved-hero h1 > :nth-child(2) { animation-delay: 0.35s; }
+.saved-hero h1 > :nth-child(3) { animation-delay: 0.8s; }
+
+.saved-hero h1 em {
+  color: var(--secondary);
+  text-shadow: 0 0 2.5rem color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.saved-hero .saved-kicker { animation: saved-fade 1.2s ease both; }
+.saved-lede { animation: saved-fade 1.4s 1.3s ease both; }
+.saved-cue { animation: saved-fade 1.4s 1.8s ease both; }
+
+@keyframes saved-rise {
+  from { opacity: 0; transform: translateY(0.35em); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes saved-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.saved-lede {
+  max-width: 38rem;
+  margin: 0 0 3rem;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--text-light-muted);
+}
+
+.saved-cue {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font: 600 0.8rem var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-light-muted);
+}
+
+.saved-cue span {
+  position: relative;
+  width: 1px;
+  height: 4rem;
+  overflow: hidden;
+  background: var(--rule-light);
+}
+
+.saved-cue span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--secondary);
+  animation: saved-drip 2.4s ease-in-out infinite;
+}
+
+@keyframes saved-drip {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+.saved-cue:hover { color: var(--secondary); }
+.saved-cue:focus-visible { outline: 2px solid var(--secondary); outline-offset: 6px; }
+
+/* ---------- The question: Acts 16 ---------- */
+
+.saved-section--night {
+  background: linear-gradient(to bottom, var(--night-2), var(--primary));
+  color: var(--text-light);
+}
+
+.saved-beats {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-beats li {
+  max-width: 46rem;
+  margin: 0 0 clamp(3rem, 8vw, 5.5rem);
+  font: 400 clamp(1.5rem, 3.2vw, 2.35rem)/1.35 var(--display-secondary);
+  color: var(--text-light-muted);
+}
+
+.saved-beats li:nth-child(even) {
+  margin-left: auto;
+}
+
+.saved-beats sup {
+  margin-right: 0.45em;
+  font: 600 0.75rem var(--sans);
+  color: var(--secondary-soft);
+}
+
+.saved-the-question {
+  margin: clamp(4rem, 10vw, 8rem) 0 clamp(4rem, 9vw, 7rem);
+  font: 400 clamp(3rem, 9vw, 7.5rem)/1 var(--display-secondary);
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 3rem color-mix(in srgb, var(--secondary) 15%, transparent);
+}
+
+.saved-story.is-quaking .saved-wrap {
+  animation: saved-quake 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes saved-quake {
+  10%, 90% { transform: translate(-1px, 1px); }
+  20%, 80% { transform: translate(3px, -2px); }
+  30%, 50%, 70% { transform: translate(-6px, 2px) rotate(-0.3deg); }
+  40%, 60% { transform: translate(6px, -1px) rotate(0.3deg); }
+}
+
+/* ---------- Saved from what? ---------- */
+
+.saved-section--deep {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.saved-section--deep a,
+.saved-section--darkest a {
+  color: var(--secondary);
+}
+
+.saved-truths {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-truths li {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-light);
+  color: var(--text-light-muted);
+}
+
+.saved-truths li:nth-child(2) { transition-delay: 0.15s; }
+.saved-truths li:nth-child(3) { transition-delay: 0.3s; }
+
+.saved-truths__num {
+  display: block;
+  font: 400 3rem/1 var(--display-secondary);
+  color: var(--secondary-soft);
+}
+
+.saved-truths h3 {
+  margin: 0.75rem 0 1rem;
+  font: 400 2rem/1.1 var(--display-secondary);
+  color: var(--text-light);
+}
+
+.saved-truths p {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+}
+
+.saved-truths blockquote {
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--brass);
+  font-style: italic;
+  color: var(--his-light);
+}
+
+/* The mirror: flip cards */
+
+.saved-mirror {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  margin: clamp(5rem, 10vw, 8rem) 0;
+}
+
+.saved-mirror__intro h3 {
+  margin: 0 0 1rem;
+  font: 400 clamp(2rem, 4vw, 2.75rem)/1.05 var(--display-secondary);
+}
+
+.saved-mirror__intro p {
+  margin: 0;
+  color: var(--text-light-muted);
+}
+
+.saved-mirror__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-mirror__cards li:nth-child(even) { transition-delay: 0.12s; }
+
+.saved-card {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  perspective: 1200px;
+}
+
+.saved-card__face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 13rem;
+  padding: 1.75rem;
+  border: 1px solid var(--rule-light-strong);
+  backface-visibility: hidden;
+  transition: transform 0.8s cubic-bezier(0.3, 0.7, 0.2, 1), border-color 0.3s ease;
+}
+
+.saved-card__face small {
+  font: 600 0.75rem var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.saved-card__face--front {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.saved-card__face--front small { color: var(--secondary-soft); }
+
+.saved-card__face--front strong {
+  font: 400 clamp(1.6rem, 2.6vw, 2rem)/1.15 var(--display-secondary);
+}
+
+.saved-card__hint {
+  margin-top: auto;
+  font: 600 0.85rem var(--sans);
+  color: var(--text-light-muted);
+}
+
+.saved-card__hint::after {
+  content: " \2192";
+  color: var(--secondary);
+}
+
+.saved-card__face--back {
+  transform: rotateY(180deg);
+  background: var(--his-light);
+  border-color: var(--his-light);
+  color: var(--text);
+}
+
+.saved-card__face--back small { color: var(--text-accent); }
+
+.saved-card__face--back span {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.saved-card__face--back cite {
+  margin-top: auto;
+  color: var(--text-accent);
+}
+
+.saved-card[aria-pressed="true"] .saved-card__face--front { transform: rotateY(-180deg); }
+.saved-card[aria-pressed="true"] .saved-card__face--back { transform: rotateY(0); }
+
+.saved-card:hover .saved-card__face--front { border-color: var(--secondary); }
+
+.saved-card:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 4px;
+}
+
+/* ---------- Can I save myself? The darkest hour ---------- */
+
+.saved-section--darkest {
+  padding-bottom: clamp(8rem, 18vw, 14rem);
+  background: linear-gradient(to bottom, var(--primary), var(--night) 85%);
+  color: var(--text-light);
+}
+
+.saved-strikes {
+  margin: clamp(3rem, 6vw, 4.5rem) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-strikes li {
+  margin: 0.1rem 0;
+  font: 400 clamp(2rem, 5.5vw, 4rem)/1.2 var(--display-secondary);
+  color: var(--text-light);
+  text-wrap: balance;
+  transition: opacity 0.8s ease;
+  transition-delay: calc(0.6s + var(--i) * 0.45s);
+}
+
+/* The strike is a background on the inline span, so when a phrase wraps the line
+   sweeps across the first line and then continues onto the next. */
+.saved-strikes span {
+  padding-inline: 0.12em;
+  margin-inline: -0.12em;
+  background: linear-gradient(var(--sav-scarlet), var(--sav-scarlet)) no-repeat 0 58% / 0% 0.07em;
+  transition: background-size 0.55s cubic-bezier(0.6, 0, 0.3, 1);
+  transition-delay: calc(0.4s + var(--i) * 0.45s);
+}
+
+.saved-strikes.is-visible li { opacity: 0.4; }
+.saved-strikes.is-visible span { background-size: 100% 0.07em; }
+
+/* Without JS the list never "reveals", so strike it statically. */
+html:not(.js) .saved-strikes li { opacity: 0.4; }
+html:not(.js) .saved-strikes span { background-size: 100% 0.07em; }
+
+.saved-dark-line {
+  max-width: 34rem;
+  margin: clamp(5rem, 12vw, 9rem) auto 0;
+  font: italic 400 clamp(1.6rem, 3.5vw, 2.4rem)/1.3 var(--display-secondary);
+  text-align: center;
+  color: var(--text-light-muted);
+}
+
+/* ---------- But God: the dawn ---------- */
+
+.saved-dawn {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(6rem, 14vw, 11rem);
+  background: linear-gradient(to bottom,
+    var(--night) 0%,
+    var(--primary) 18%,
+    var(--teal) 40%,
+    color-mix(in srgb, var(--teal) 45%, var(--brass)) 54%,
+    var(--brass) 64%,
+    var(--his-light) 80%,
+    var(--paper) 100%);
+  color: var(--text-light);
+}
+
+.saved-dawn__sun {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: min(130vw, 64rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle,
+    var(--sav-sun) 0 12%,
+    rgba(255, 247, 226, 0.7) 20%,
+    rgba(241, 234, 223, 0.35) 34%,
+    rgba(212, 176, 90, 0.12) 50%,
+    transparent 68%);
+  transform: translate(-50%, calc(-50% + (1 - var(--rise, 1)) * 45%)) scale(calc(0.75 + var(--rise, 1) * 0.25));
+}
+
+.saved-dawn__sun span {
+  position: absolute;
+  inset: -15%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 247, 226, 0.2) 0deg 3deg, transparent 3deg 15deg);
+  -webkit-mask: radial-gradient(circle, #000 12%, transparent 62%);
+  mask: radial-gradient(circle, #000 12%, transparent 62%);
+  opacity: var(--rise, 1);
+  animation: saved-spin 160s linear infinite;
+}
+
+@keyframes saved-spin {
+  to { transform: rotate(1turn); }
+}
+
+.saved-dawn__inner {
+  padding-inline: var(--site-gutter);
+  text-align: center;
+}
+
+.saved-dawn .saved-kicker { color: var(--secondary-soft); }
+
+.saved-but-god {
+  margin: 0 0 2.5rem;
+  font: 400 clamp(5rem, 19vw, 15rem)/0.88 var(--display-secondary);
+  letter-spacing: -0.03em;
+  color: var(--his-light);
+}
+
+.saved-but-god em {
+  text-shadow: 0 0 3rem rgba(255, 247, 226, 0.55);
+}
+
+.js .saved-but-god {
+  letter-spacing: 0.25em;
+  filter: blur(10px);
+  transition: opacity 1.6s ease, transform 1.6s ease, letter-spacing 2.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 1.6s ease;
+}
+
+.js .saved-but-god.is-visible {
+  letter-spacing: -0.03em;
+  filter: none;
+}
+
+.saved-dawn__verse {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: clamp(1.2rem, 2.3vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-light-muted);
+}
+
+.saved-dawn__horizon {
+  position: relative;
+  padding: clamp(14rem, 30vw, 24rem) var(--site-gutter) clamp(5rem, 10vw, 8rem);
+  color: var(--text);
+}
+
+.saved-dawn__horizon .saved-prose--lead {
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+}
+
+/* ---------- Day: the Savior ---------- */
+
+.saved-section--day {
+  --sav-em: var(--text-accent);
+  background: var(--paper);
+}
+
+.saved-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 2.5rem 2rem;
+  margin: clamp(3rem, 6vw, 4.5rem) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-timeline li {
+  position: relative;
+  padding-top: 2rem;
+  border-top: 2px solid var(--rule);
+}
+
+.saved-timeline li::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brass);
+  box-shadow: 0 0 0 4px var(--paper);
+}
+
+.saved-timeline li:nth-child(2) { transition-delay: 0.12s; }
+.saved-timeline li:nth-child(3) { transition-delay: 0.24s; }
+.saved-timeline li:nth-child(4) { transition-delay: 0.36s; }
+
+.saved-timeline h3 {
+  margin: 0 0 0.75rem;
+  font: 400 2.1rem/1 var(--display-secondary);
+  color: var(--text-accent);
+}
+
+.saved-timeline p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* ---------- The great exchange ---------- */
+
+.saved-exchange {
+  --sav-em: var(--text-accent);
+  position: relative;
+  padding: 0 var(--site-gutter);
+  background: var(--paper);
+}
+
+.saved-exchange__stage {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.saved-exchange .saved-h2 {
+  text-align: center;
+}
+
+/* Figures and tokens share these x positions so they always line up. */
+.saved-exchange__track {
+  --sav-x1: 25%;
+  --sav-x2: 75%;
+  position: relative;
+  height: clamp(15rem, 34vh, 20rem);
+  margin: 1rem auto 2rem;
+  max-width: 52rem;
+}
+
+.saved-exchange__figure {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  transform: translateX(-50%);
+}
+
+.saved-exchange__figure--christ { left: var(--sav-x1); }
+.saved-exchange__figure--you { left: var(--sav-x2); }
+
+.saved-exchange__figure strong {
+  font: 600 0.9rem var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.saved-exchange__mark {
+  position: relative;
+  width: clamp(4.5rem, 10vw, 7rem);
+  aspect-ratio: 1;
+  border: 2px solid var(--text-accent);
+  border-radius: 50%;
+  transition: box-shadow 1s ease, border-color 1s ease, background-color 1s ease;
+}
+
+.saved-exchange__mark--cross::before,
+.saved-exchange__mark--cross::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  background: var(--text-accent);
+  transform: translateX(-50%);
+}
+
+.saved-exchange__mark--cross::before { top: 18%; bottom: 18%; width: 3px; }
+.saved-exchange__mark--cross::after { top: 36%; width: 44%; height: 3px; }
+
+/* A simple person: head and shoulders */
+.saved-exchange__mark--you { overflow: hidden; border-color: var(--text-muted); }
+
+.saved-exchange__mark--you::before,
+.saved-exchange__mark--you::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transform: translateX(-50%);
+  transition: background-color 1s ease;
+}
+
+.saved-exchange__mark--you::before { top: 20%; width: 30%; aspect-ratio: 1; }
+.saved-exchange__mark--you::after { top: 58%; width: 64%; height: 60%; }
+
+.saved-exchange__token {
+  position: absolute;
+  top: 22%;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  font: 700 clamp(0.75rem, 1.6vw, 0.95rem) var(--sans);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.saved-exchange__token--righteousness {
+  left: calc(var(--sav-x1) + (var(--sav-x2) - var(--sav-x1)) * var(--m, 1));
+  transform: translate(-50%, calc(-50% - var(--arc, 0) * 4.5rem));
+  background: var(--brass);
+  color: var(--night);
+  box-shadow: 0 0 calc(0.5rem + var(--m, 1) * 2.5rem) rgba(212, 176, 90, 0.6);
+}
+
+.saved-exchange__token--sin {
+  display: grid;
+  left: calc(var(--sav-x2) - (var(--sav-x2) - var(--sav-x1)) * var(--m, 1));
+  transform: translate(-50%, calc(-50% + var(--arc, 0) * 3rem));
+  background: var(--his-accent);
+  color: var(--text-light);
+  transition: background-color 0.8s ease;
+}
+
+.saved-exchange__sin-label,
+.saved-exchange__paid-label {
+  grid-area: 1 / 1;
+  text-align: center;
+  transition: opacity 0.6s ease;
+}
+
+.saved-exchange__paid-label { opacity: 0; }
+
+.saved-exchange.is-done .saved-exchange__token--sin { background: var(--text-accent); }
+.saved-exchange.is-done .saved-exchange__sin-label { opacity: 0; }
+.saved-exchange.is-done .saved-exchange__paid-label { opacity: 1; }
+
+.saved-exchange.is-done .saved-exchange__mark--you {
+  border-color: var(--brass);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 6px rgba(212, 176, 90, 0.18), 0 0 3rem rgba(212, 176, 90, 0.55);
+}
+
+.saved-exchange.is-done .saved-exchange__mark--you::before,
+.saved-exchange.is-done .saved-exchange__mark--you::after {
+  background: var(--brass);
+}
+
+.saved-exchange__captions {
+  display: grid;
+  max-width: 50rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.saved-exchange__captions p {
+  margin: 0 0 1.25rem;
+}
+
+.saved-exchange__intro {
+  font: 600 0.85rem var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.saved-exchange__verse {
+  font: 400 clamp(1.6rem, 3.4vw, 2.6rem)/1.2 var(--display-secondary);
+}
+
+.saved-exchange__finished {
+  font: italic 400 clamp(2rem, 4.5vw, 3.25rem)/1 var(--display-secondary);
+  color: var(--text-accent);
+}
+
+/* Live mode (JS, motion allowed): the stage pins while the page scrolls through 3 screens. */
+.saved-exchange.is-live { height: 320vh; }
+
+.saved-exchange.is-live .saved-exchange__stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  height: 100svh;
+  padding-block: var(--site-nav-h) 1rem;
+}
+
+.saved-exchange.is-live .saved-exchange__stage > .saved-wrap { width: min(100%, 72rem); }
+
+/* Intro and verse swap in place; "It is finished" gets its own row below. */
+.saved-exchange.is-live .saved-exchange__captions > * {
+  grid-area: 1 / 1;
+  align-self: start;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.saved-exchange.is-live .saved-exchange__captions > .saved-exchange__finished { grid-area: 2 / 1; }
+
+.saved-exchange.is-live .saved-exchange__intro { opacity: 0; }
+.saved-exchange.is-live[data-step="0"] .saved-exchange__intro { opacity: 1; }
+
+.saved-exchange.is-live .saved-exchange__verse { opacity: 0; }
+.saved-exchange.is-live:not([data-step="0"]) .saved-exchange__verse { opacity: 1; }
+.saved-exchange.is-live .saved-exchange__verse span,
+.saved-exchange.is-live .saved-exchange__verse cite { opacity: 0.18; transition: opacity 0.6s ease; }
+.saved-exchange.is-live[data-step="1"] .saved-exchange__verse span:nth-child(1),
+.saved-exchange.is-live[data-step="2"] .saved-exchange__verse span:nth-child(-n+2),
+.saved-exchange.is-live[data-step="3"] .saved-exchange__verse span,
+.saved-exchange.is-live[data-step="3"] .saved-exchange__verse cite,
+.saved-exchange.is-live[data-step="4"] .saved-exchange__verse span,
+.saved-exchange.is-live[data-step="4"] .saved-exchange__verse cite { opacity: 1; }
+
+.saved-exchange.is-live .saved-exchange__finished {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+.saved-exchange.is-live[data-step="4"] .saved-exchange__finished { opacity: 1; transform: none; }
+
+
+/* ---------- After the exchange ---------- */
+
+.saved-section--after-exchange {
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.saved-section--after-exchange a { color: var(--text-accent); }
+
+.saved-big-verse--scarlet {
+  max-width: none;
+  padding: clamp(2.5rem, 6vw, 5rem);
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.saved-big-verse--scarlet span:first-child { color: var(--sav-scarlet); }
+
+.saved-big-verse--scarlet span:last-of-type {
+  color: var(--surface);
+  text-shadow: 0 0 1.5rem rgba(255, 255, 255, 0.7);
+}
+
+.saved-big-verse--scarlet cite { color: var(--text-light-muted); }
+
+/* ---------- The answer ---------- */
+
+.saved-section--answer {
+  --sav-em: var(--text-accent);
+  background: linear-gradient(to bottom, var(--paper), var(--his-light));
+}
+
+.saved-callback {
+  margin: 0 0 1.5rem;
+  font: italic 400 clamp(1.4rem, 2.6vw, 2rem) var(--display-secondary);
+  color: var(--text-muted);
+}
+
+.saved-answer {
+  margin: 0;
+  font: 400 clamp(3rem, 8.5vw, 7.25rem)/1 var(--display-secondary);
+  letter-spacing: -0.02em;
+}
+
+.saved-answer span { display: block; }
+
+.saved-answer__ref {
+  margin: 1.5rem 0 clamp(3rem, 7vw, 5rem);
+  font: 600 0.8rem var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.saved-turn {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+  margin: clamp(3rem, 6vw, 4.5rem) 0;
+}
+
+.saved-turn__card {
+  align-self: stretch;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 3px solid var(--text-accent);
+  background: var(--surface);
+}
+
+.saved-turn__card + .saved-turn__arrow + .saved-turn__card { transition-delay: 0.2s; }
+
+.saved-turn__card h3 {
+  margin: 0 0 1rem;
+  font: 400 2.5rem/1 var(--display-secondary);
+  color: var(--text-accent);
+}
+
+.saved-turn__def {
+  margin: 0;
+  font-style: italic;
+}
+
+.saved-turn__src {
+  margin: 0.75rem 0 1.5rem;
+  font: 600 0.8rem var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.saved-turn__src a { color: var(--text-accent); }
+
+.saved-turn__card > p:last-child {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.saved-turn__arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font: 600 0.75rem var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.saved-turn__arrow::before {
+  content: "";
+  order: 1;
+  width: 1px;
+  height: 5rem;
+  background: linear-gradient(var(--sav-scarlet), var(--brass));
+}
+
+.saved-turn__arrow span:last-child {
+  order: 2;
+  color: var(--text-accent);
+}
+
+/* ---------- The invitation ---------- */
+
+.saved-section--invite {
+  --sav-em: var(--text-accent);
+  background: var(--wash);
+}
+
+.saved-invites {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-invites li {
+  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+  border-top: 1px solid var(--rule);
+  font: 400 clamp(1.8rem, 4vw, 3.25rem)/1.15 var(--display-secondary);
+}
+
+.saved-invites li:nth-child(even) { text-align: right; }
+
+.saved-invites cite { color: var(--text-accent); }
+
+.saved-prayer {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  margin-top: clamp(4rem, 9vw, 7rem);
+  padding: clamp(2.5rem, 6vw, 5rem);
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(212, 176, 90, 0.22), transparent 70%),
+    var(--primary);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.saved-prayer h3 {
+  margin: 0 0 1rem;
+  font: 400 clamp(2rem, 4vw, 2.75rem)/1.05 var(--display-secondary);
+}
+
+.saved-prayer p {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: var(--text-light-muted);
+}
+
+.saved-prayer a { color: var(--secondary); }
+
+.saved-prayer blockquote {
+  margin: 0;
+  font: italic 400 clamp(2.4rem, 7vw, 5rem)/1.05 var(--display-secondary);
+  color: var(--his-light);
+  text-shadow: 0 0 2.5rem rgba(212, 176, 90, 0.4);
+}
+
+.saved-prayer blockquote cite { color: var(--text-light-muted); }
+
+.saved-prayer__after { font-size: 1rem; }
+
+/* A candle flame */
+.saved-prayer__flame {
+  justify-self: center;
+  width: 16px;
+  height: 26px;
+  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  background: radial-gradient(ellipse at 50% 72%, var(--sav-sun) 0 22%, var(--brass) 48%, var(--his-accent) 100%);
+  box-shadow: 0 0 1.5rem 0.5rem rgba(212, 176, 90, 0.45), 0 0 4rem 1.5rem rgba(212, 176, 90, 0.15);
+  transform-origin: 50% 90%;
+  animation: saved-flicker 2.8s ease-in-out infinite;
+}
+
+@keyframes saved-flicker {
+  0%, 100% { transform: scale(1) rotate(-1deg); }
+  25% { transform: scale(0.94, 1.06) rotate(2deg); }
+  50% { transform: scale(1.04, 0.96) rotate(-2deg); }
+  75% { transform: scale(0.97, 1.04) rotate(1deg); }
+}
+
+/* ---------- Morning ---------- */
+
+.saved-morning {
+  --sav-em: var(--text-accent);
+  padding: clamp(5rem, 11vw, 9rem) var(--site-gutter);
+  background: linear-gradient(to bottom, var(--his-light), color-mix(in srgb, var(--brass) 30%, var(--his-light)));
+}
+
+.saved-morning .saved-kicker { color: var(--text-accent); }
+
+.saved-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1.25rem;
+  margin: clamp(3rem, 6vw, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-steps li {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  background: var(--surface);
+}
+
+.saved-steps li:nth-child(3n + 2) { transition-delay: 0.1s; }
+.saved-steps li:nth-child(3n) { transition-delay: 0.2s; }
+
+.saved-steps h3 {
+  margin: 0 0 0.75rem;
+  font: 400 2rem/1 var(--display-secondary);
+  color: var(--text-accent);
+}
+
+.saved-steps p {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.saved-steps a {
+  margin-top: auto;
+  font: 600 0.95rem var(--sans);
+  color: var(--text-accent);
+}
+
+.saved-steps a::after { content: " \2192"; }
+
+.saved-joy {
+  max-width: 50rem;
+  margin: clamp(5rem, 12vw, 9rem) auto 0;
+  font: 400 clamp(2.25rem, 6vw, 4.5rem)/1.1 var(--display-secondary);
+  text-align: center;
+}
+
+.saved-joy::before {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 2.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sav-sun) 0 35%, var(--brass) 70%);
+  box-shadow: 0 0 3rem 1rem rgba(212, 176, 90, 0.4);
+}
+
+.saved-joy em { color: var(--text-accent); }
+
+/* ---------- Progress rail: moon to sun ---------- */
+
+.saved-rail {
+  position: fixed;
+  top: 50%;
+  right: 1.25rem;
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-light-muted);
+  transform: translateY(-50%);
+  transition: color 0.4s ease;
+}
+
+.saved-rail--light { color: var(--text-muted); }
+
+.saved-rail ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-rail a {
+  position: relative;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.saved-rail a[aria-current="true"] {
+  background: currentColor;
+  transform: scale(1.3);
+}
+
+.saved-rail a span {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  padding: 0.3rem 0.65rem;
+  font: 600 0.8rem var(--sans);
+  white-space: nowrap;
+  background: var(--primary);
+  color: var(--text-light);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0.5rem, -50%);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.saved-rail a:hover span,
+.saved-rail a:focus-visible span {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.saved-rail a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.saved-rail__moon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset -4px 2px 0 0 currentColor;
+}
+
+.saved-rail__sun {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brass);
+  box-shadow: 0 0 0.6rem rgba(212, 176, 90, 0.8);
+}
+
+@media (min-width: 1200px) {
+  .saved-rail { display: flex; }
+}
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 900px) {
+  .saved-mirror { grid-template-columns: 1fr; }
+  .saved-turn { grid-template-columns: 1fr; }
+  .saved-turn__arrow { flex-direction: row; justify-content: center; }
+  .saved-turn__arrow::before { width: 3rem; height: 1px; background: linear-gradient(to right, var(--sav-scarlet), var(--brass)); }
+}
+
+@media (max-width: 600px) {
+  .saved-mirror__cards { grid-template-columns: 1fr; }
+  .saved-card__face { min-height: 11rem; }
+  .saved-beats li:nth-child(even) { margin-left: 0; }
+  .saved-invites li:nth-child(even) { text-align: left; }
+  .saved-exchange__token { padding: 0.55rem 0.8rem; }
+  .saved-exchange__track { --sav-x1: 23%; --sav-x2: 77%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saved-sky__stars,
+  .saved-dawn__sun span,
+  .saved-prayer__flame,
+  .saved-cue span::after,
+  .saved-hero h1 > *,
+  .saved-hero .saved-kicker,
+  .saved-lede,
+  .saved-cue { animation: none; }
+  .saved-sky { transform: none; }
+  .js [data-reveal],
+  .js .saved-but-god { transform: none; filter: none; letter-spacing: -0.03em; transition: opacity 0.4s ease; }
+  .saved-strikes li, .saved-strikes span { transition-duration: 0s; transition-delay: 0s; }
+  .saved-card__face { transition: none; }
+}

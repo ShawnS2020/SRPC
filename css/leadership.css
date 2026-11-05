@@ -1,0 +1,111 @@
+/* Our Leadership page. Scoped by .page-leadership or .leadership-* classes. */
+.page-leadership {
+  font: 400 1.0625rem/1.75 var(--display);
+  color: var(--text);
+  background: var(--paper);
+}
+
+.page-leadership a:not(.site-nav__brand, .site-nav__link, .site-nav__sublink):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* ---------- Footer skin ---------- */
+
+.page-leadership .site-footer {
+  background: var(--wash);
+  font-family: var(--sans);
+}
+
+.page-leadership .site-footer__name {
+  font-family: var(--display);
+}
+
+/* ---------- Hero ---------- */
+
+.leadership-hero {
+  padding: clamp(7rem, 13vw, 11rem) var(--site-gutter) clamp(3rem, 6vw, 5rem);
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.leadership-wrap {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.leadership-hero h1 {
+  margin: 0;
+  font: 400 clamp(3.25rem, 11vw, 9rem)/0.95 var(--display-secondary);
+  letter-spacing: -0.02em;
+}
+
+.leadership-hero em {
+  color: var(--secondary);
+}
+
+/* ---------- Portraits: one size throughout, as the elders' source photos are only about 100px wide ---------- */
+
+.leadership-portrait {
+  display: block;
+  width: 7rem;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+  background: var(--wash);
+}
+
+/* ---------- Elders: equal columns for three equal elders ---------- */
+
+.leadership-elders {
+  padding: clamp(3.5rem, 8vw, 6.5rem) var(--site-gutter);
+}
+
+.leadership-elders h2 {
+  margin: 0;
+  font: 400 clamp(2.25rem, 4.5vw, 3.25rem)/1.05 var(--display-secondary);
+  letter-spacing: -0.015em;
+}
+
+.leadership-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem clamp(1rem, 4vw, 3rem);
+  margin: clamp(2rem, 4vw, 3rem) 0;
+  padding: 0;
+  list-style: none;
+  font: 400 0.95rem/1.4 var(--sans);
+  color: var(--text-muted);
+}
+
+.leadership-trio .leadership-portrait {
+  margin-bottom: 1rem;
+}
+
+.leadership-trio strong {
+  display: block;
+  font: 400 clamp(1.4rem, 2.4vw, 1.75rem)/1.2 var(--display-secondary);
+  color: var(--text);
+}
+
+.leadership-elders__text {
+  max-width: 44rem;
+  margin: 0;
+  font-size: clamp(1.1rem, 1.7vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.leadership-elders__text + .leadership-elders__text {
+  margin-top: 1.25rem;
+}
+
+.leadership-elders__text a {
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .leadership-trio {
+    grid-template-columns: 1fr;
+  }
+}

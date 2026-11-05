@@ -1,0 +1,274 @@
+/* Long-form written histories (history-thompson.html, history-edgar.html). Scoped by .page-histdoc or .histdoc-* classes. */
+.page-histdoc {
+  --hd-accent: var(--text-accent);
+  font: 400 1.125rem/1.8 var(--display);
+  color: var(--text);
+  background: var(--paper);
+}
+
+/* ---------- Footer skin (matches Our History) ---------- */
+
+.page-histdoc .site-footer {
+  background: var(--primary);
+  color: var(--text-light);
+  font-family: var(--sans);
+}
+
+.page-histdoc .site-footer__copy {
+  border-top-color: var(--rule-light);
+}
+
+.page-histdoc .site-footer a {
+  color: inherit;
+}
+
+/* ---------- Hero ---------- */
+
+.histdoc-hero {
+  padding: clamp(4rem, 9vw, 7rem) var(--site-gutter) clamp(2.5rem, 5vw, 4rem);
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.histdoc-hero__inner {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.histdoc-back {
+  margin: 4rem 0 0;
+  font: 600 0.95rem var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+}
+
+.histdoc-back a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.histdoc-back a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.histdoc-hero h1 {
+  max-width: 16em;
+  margin: 1rem 0 1.5rem;
+  font: 400 clamp(2.5rem, 6vw, 4.5rem)/1.02 var(--display-secondary);
+  letter-spacing: -0.015em;
+}
+
+.histdoc-hero h1 em {
+  color: var(--secondary);
+}
+
+.histdoc-byline {
+  margin: 0;
+  font: italic 400 clamp(1.15rem, 2vw, 1.4rem)/1.4 var(--display);
+}
+
+.histdoc-source {
+  max-width: 44rem;
+  margin: 1.75rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule-light);
+  font: 400 1rem/1.6 var(--sans);
+  color: var(--text-light-muted);
+}
+
+.histdoc-source a {
+  color: var(--secondary);
+  text-underline-offset: 3px;
+}
+
+.histdoc-back a:focus-visible,
+.histdoc-source a:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout: sticky contents + reading column ---------- */
+
+.histdoc-section {
+  display: block;
+  padding: clamp(3rem, 7vw, 5.5rem) var(--site-gutter);
+}
+
+.histdoc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 40rem);
+  gap: 2rem clamp(2rem, 6vw, 5rem);
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.histdoc-toc {
+  position: sticky;
+  top: calc(var(--site-nav-h) + 2rem);
+  align-self: start;
+  font: 400 0.95rem/1.4 var(--sans);
+}
+
+.histdoc-toc__label {
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+.histdoc-toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 2px solid var(--rule);
+}
+
+.histdoc-toc a {
+  display: block;
+  margin-left: -2px;
+  padding: 0.4rem 0 0.4rem 1rem;
+  border-left: 2px solid transparent;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.histdoc-toc a:hover,
+.histdoc-toc a.active {
+  color: var(--text-accent);
+  border-left-color: var(--hd-accent);
+}
+
+/* ---------- Reading column ---------- */
+
+.histdoc-body p {
+  margin: 0 0 1.4rem;
+}
+
+.histdoc-body a {
+  color: var(--text-accent);
+  text-underline-offset: 3px;
+}
+
+.histdoc-body h2 {
+  scroll-margin-top: calc(var(--site-nav-h) + 1.5rem);
+  margin: 3.5rem 0 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font: 400 clamp(1.9rem, 3.5vw, 2.6rem)/1.1 var(--display-secondary);
+  color: var(--text-accent);
+}
+
+.histdoc-body h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* Interment records lead with a surname in capitals */
+.histdoc-body p > strong:first-child {
+  font: 600 0.95em var(--sans);
+  letter-spacing: 0.04em;
+  color: var(--text-accent);
+}
+
+/* Name lists: founding members, burials */
+.histdoc-names {
+  columns: 2 14rem;
+  column-gap: 2.5rem;
+  margin: 0 0 1.75rem;
+  padding: 1rem 0;
+  list-style: none;
+  border-block: 1px solid var(--rule);
+  font: 400 1rem/1.5 var(--sans);
+}
+
+.histdoc-names li {
+  break-inside: avoid;
+  padding: 0.2rem 0;
+}
+
+/* 1969 historical marker */
+.histdoc-plaque {
+  margin: 2.5rem 0;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--primary);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.histdoc-plaque__title {
+  font: 600 0.95rem var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.histdoc-body .histdoc-plaque blockquote {
+  margin: 0;
+}
+
+.histdoc-body .histdoc-plaque blockquote p {
+  margin: 0;
+  font: italic 400 1.15rem/1.6 var(--display);
+}
+
+.histdoc-plaque figcaption {
+  margin-top: 1.25rem;
+  font: 600 0.85rem var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+}
+
+/* Parsonage + basement diary entries */
+.histdoc-timeline {
+  margin: 0 0 1.75rem;
+  border-top: 1px solid var(--rule);
+  font: 400 1rem/1.5 var(--sans);
+}
+
+.histdoc-timeline div {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.histdoc-timeline dt {
+  font-weight: 600;
+  color: var(--text-accent);
+}
+
+.histdoc-timeline dd {
+  margin: 0;
+}
+
+.histdoc-biblio {
+  margin: 0 0 1.75rem;
+  padding-left: 1.25rem;
+}
+
+.histdoc-biblio li {
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width: 860px) {
+  .histdoc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .histdoc-toc {
+    position: static;
+  }
+}
+
+@media (max-width: 520px) {
+  .histdoc-timeline div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

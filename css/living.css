@@ -1,0 +1,406 @@
+/* Scriptural Living page. Everything is scoped by .page-living, --liv-* variables, or .living-* classes. */
+.page-living {
+  --liv-accent: var(--text-accent);
+  font: 400 1.0625rem/1.75 var(--display);
+  color: var(--text);
+  background: var(--paper);
+}
+
+/* ---------- Footer skin ---------- */
+
+.page-living .site-footer {
+  background: var(--wash);
+  font-family: var(--sans);
+}
+
+.page-living .site-footer__name {
+  font-family: var(--display);
+}
+
+/* ---------- Hero: the narrow way ---------- */
+
+.living-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: min(92vh, 56rem);
+  padding: clamp(4rem, 9vw, 8rem) var(--site-gutter) clamp(9rem, 16vw, 13rem);
+  background: linear-gradient(to bottom, var(--primary) 0%, var(--primary-tint-2) 100%);
+  color: var(--text-light);
+}
+
+.living-hero__art {
+  position: absolute;
+  inset: auto 0 0;
+  width: 100%;
+  height: 72%;
+}
+
+.living-hero__inner {
+  position: relative;
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.living-hero h1 {
+  margin: 4rem 0 1.75rem;
+  font: 400 clamp(3.25rem, 9vw, 6rem)/0.95 var(--display-secondary);
+  letter-spacing: -0.02em;
+}
+
+.living-hero h1 em {
+  color: var(--secondary);
+}
+
+.living-lede {
+  max-width: 40rem;
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--text-light-muted);
+}
+
+.living-index {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin-top: 2.5rem;
+  font: 600 1rem var(--sans);
+}
+
+.living-index a {
+  padding-block: 0.15rem;
+  text-decoration-color: var(--secondary-soft);
+  text-underline-offset: 4px;
+}
+
+.living-index a:hover {
+  color: var(--secondary);
+}
+
+/* ---------- Sections ---------- */
+
+.living-section {
+  scroll-margin-top: var(--site-nav-h);
+  padding: clamp(4rem, 9vw, 7.5rem) var(--site-gutter);
+}
+
+.living-section--dark {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.living-section--king {
+  background: var(--liv-accent);
+  color: var(--text-light);
+}
+
+.living-wrap {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.living-section h2 {
+  margin: 0 0 2rem;
+  font: 400 clamp(2.5rem, 6vw, 4.25rem)/1.02 var(--display-secondary);
+  letter-spacing: -0.015em;
+}
+
+.living-section:not(.living-section--dark, .living-section--king) h2 {
+  color: var(--text-accent);
+}
+
+.living-prose {
+  max-width: 44rem;
+  margin: 0 0 1.5rem;
+}
+
+.living-prose a,
+.living-means a,
+.living-secret a {
+  text-underline-offset: 3px;
+}
+
+.living-section--dark .living-prose a,
+.living-section--king .living-prose a {
+  color: var(--secondary);
+}
+
+.living-section a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.living-index a:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+/* ---------- Chief end + means of grace ---------- */
+
+.living-chief-end {
+  margin: clamp(1.5rem, 4vw, 3rem) 0 clamp(2rem, 5vw, 3.5rem);
+  font: 400 clamp(2.5rem, 7.5vw, 5.75rem)/1.04 var(--display-secondary);
+  letter-spacing: -0.02em;
+}
+
+.living-chief-end em {
+  color: var(--text-accent);
+}
+
+.living-means {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 2rem clamp(2rem, 6vw, 5rem);
+  align-items: start;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--rule);
+}
+
+.living-means p {
+  margin: 0;
+}
+
+.living-means ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 400 clamp(1.5rem, 2.6vw, 2rem)/1.2 var(--display-secondary);
+}
+
+.living-means li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.living-means li:first-child {
+  padding-top: 0;
+}
+
+.living-means li:last-child {
+  border-bottom: 0;
+}
+
+/* ---------- Moral law: tablets + the catechism's three uses ---------- */
+
+.living-law-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2.5rem clamp(2.5rem, 7vw, 6rem);
+  align-items: center;
+}
+
+/* Numerals follow the catechism's division: four commandments, then six (LC 102-103). */
+.living-tablets {
+  display: flex;
+  gap: 0.6rem;
+  font: 400 clamp(1.1rem, 2vw, 1.5rem)/1 var(--display-secondary);
+  color: var(--secondary);
+}
+
+.living-tablets div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: clamp(5rem, 10vw, 7.5rem);
+  height: clamp(17rem, 30vw, 23rem);
+  padding: 3.5rem 0 1.5rem;
+  border: 1px solid var(--secondary-soft);
+  border-radius: 999px 999px 8px 8px;
+  background: var(--secondary-faint);
+}
+
+.living-uses {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.living-uses article {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--secondary);
+}
+
+.living-uses__num {
+  display: block;
+  margin-bottom: 1rem;
+  font: 400 clamp(3.5rem, 6vw, 5rem)/1 var(--display-secondary);
+  color: var(--secondary);
+}
+
+.living-uses p {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-light-muted);
+}
+
+.living-uses ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 400 1.0625rem/1.6 var(--sans);
+}
+
+.living-uses li {
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--rule-light);
+}
+
+/* ---------- The names Scripture gives believers ---------- */
+
+.living-names {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: clamp(2rem, 5vw, 3.5rem) 0;
+  padding: 0;
+  list-style: none;
+  border-block: 1px solid var(--rule);
+  background: var(--rule);
+}
+
+.living-names li {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
+  background: var(--paper);
+}
+
+.living-names strong {
+  margin-bottom: 0.65rem;
+  font: 400 clamp(1.85rem, 3.2vw, 2.5rem)/1.08 var(--display-secondary);
+  color: var(--text-accent);
+}
+
+.living-names small {
+  margin-top: auto;
+  padding-top: 1rem;
+  font: 400 0.875rem/1.5 var(--sans);
+  color: var(--text-muted);
+}
+
+.living-names .living-names__pilgrims {
+  position: relative;
+  grid-column: 1 / -1;
+  overflow: hidden;
+  padding-right: clamp(1.25rem, 34%, 26rem);
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.living-names__pilgrims svg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: clamp(10rem, 34%, 26rem);
+}
+
+.living-names__pilgrims strong {
+  color: var(--secondary);
+}
+
+.living-names__pilgrims small {
+  color: var(--text-light-muted);
+}
+
+.living-secret {
+  max-width: 46rem;
+  margin: 0;
+  padding: 1.5rem 1.75rem;
+  background: var(--wash);
+  border-left: 4px solid var(--liv-accent);
+  border-radius: 0 10px 10px 0;
+}
+
+.living-sermon {
+  display: block;
+  width: 100%;
+  max-width: 46rem;
+  min-width: 150px;
+  margin-top: 1.5rem;
+  border: 0;
+}
+
+/* ---------- Kingship ---------- */
+
+.living-catechism {
+  max-width: 54rem;
+  margin: clamp(2rem, 4vw, 3rem) 0;
+  font: 400 clamp(1.55rem, 3vw, 2.35rem)/1.25 var(--display-secondary);
+  color: var(--text-light);
+}
+
+.living-spheres {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 11rem));
+  gap: clamp(0.75rem, 3vw, 2rem);
+  margin: clamp(2.5rem, 5vw, 4rem) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.living-spheres li {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--secondary);
+  border-radius: 50%;
+  font: 400 clamp(1.2rem, 3vw, 1.85rem)/1 var(--display-secondary);
+}
+
+@media (max-width: 900px) {
+  .living-uses {
+    grid-template-columns: 1fr;
+  }
+
+  .living-means {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Landscape sits below the text so the road never runs behind it. */
+  .living-hero {
+    min-height: 0;
+    padding-bottom: 12.5rem;
+  }
+
+  .living-hero__art {
+    height: 11rem;
+    overflow: visible; /* lets the glow fade out above the shorter art */
+  }
+
+  .living-law-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .living-tablets {
+    justify-content: center;
+  }
+
+  .living-names {
+    grid-template-columns: 1fr;
+  }
+
+  .living-names .living-names__pilgrims {
+    padding-right: clamp(1.25rem, 3vw, 2.5rem);
+    padding-bottom: 11rem;
+  }
+
+  .living-names__pilgrims svg {
+    height: 10rem;
+    width: 100%;
+  }
+}
+
+/* ---------- Hero art colors (SVG attributes can't read site.css variables) ---------- */
+
+.living-art__glow { stop-color: var(--secondary); }
+.living-art__hill-far { fill: var(--primary-tint-1); }
+.living-art__hill-mid { fill: var(--primary-tint-3); }
+.living-art__hill-near { fill: var(--primary-tint-4); }

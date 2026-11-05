@@ -1,0 +1,330 @@
+/* Our History page. Scoped by .page-history, --his-* variables, or .history-* classes. */
+
+.page-history {
+  font: 400 1.125rem/1.7 var(--sans);
+  background: var(--paper);
+}
+
+:where(.page-history) h1, :where(.page-history) h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ---------- Navbar + footer skins: dark and sticky ---------- */
+
+.page-history .site-footer {
+  background: var(--primary);
+  color: var(--text-light);
+  font-family: var(--sans);
+}
+
+.page-history .site-footer__name {
+  font-family: var(--display);
+}
+
+.page-history .site-footer__copy {
+  border-top-color: var(--rule-light);
+}
+
+.page-history .site-footer a {
+  color: inherit;
+}
+
+/* ---------- Hero: oversized outlined year ---------- */
+
+.history-hero {
+  background: var(--primary);
+  color: var(--text-light);
+  padding: clamp(3rem, 8vw, 6rem) var(--site-gutter) clamp(2.5rem, 5vw, 4rem);
+}
+
+.history-hero__inner {
+  width: min(100%, 72rem); margin-inline: auto;
+}
+
+.history-hero__year {
+  margin: 4rem 0 0;
+  font: 400 clamp(7rem, 26vw, 20rem)/0.8 "Fraunces", Georgia, serif;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--secondary);
+}
+
+.history-hero h1 {
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 2rem;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  font-family: var(--display);
+}
+
+.history-keydates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1rem 2rem;
+  margin: 0;
+  padding: 1.5rem 0 0;
+  list-style: none;
+  border-top: 1px solid var(--rule-light);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-light-muted);
+}
+
+.history-keydates strong {
+  display: block;
+  font: 600 1.75rem/1.1 var(--display);
+  color: var(--secondary);
+}
+
+/* ---------- Sections ---------- */
+
+.history-section {
+  padding: clamp(3.5rem, 8vw, 6.5rem) var(--site-gutter);
+}
+
+.history-wrap {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.history-split {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+  gap: 1.5rem clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.history-section h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.1; letter-spacing: -0.01em;
+}
+
+.history-prose {
+  max-width: 40rem;
+}
+
+.history-prose p {
+  margin: 0 0 1.25rem;
+}
+
+.history-founding .history-prose p:first-child {
+  font: 400 clamp(1.3rem, 2.2vw, 1.6rem)/1.5 var(--display);
+}
+
+.history-dark {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.history-dark a {
+  color: var(--secondary);
+}
+
+@media (min-width: 901px) {
+  .history-split > h2, .history-split > div:first-child {
+    position: sticky;
+    top: calc(var(--site-nav-h) + 2rem);
+  }
+}
+
+/* ---------- Photo strip ---------- */
+
+.history-gallery {
+  padding-inline: 0;
+}
+
+.history-gallery .history-wrap {
+  padding-inline: var(--site-gutter);
+}
+
+.history-gallery__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.history-gallery__nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.history-gallery__nav button {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.25rem;
+  color: var(--text-light);
+  background: none;
+  border: 1px solid var(--rule-light-strong);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.history-gallery__nav button:hover {
+  color: var(--primary);
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.history-strip {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 var(--site-gutter) 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--site-gutter);
+  scrollbar-width: thin;
+}
+
+.history-photo {
+  flex: none;
+  margin: 0;
+  max-width: 90vw;
+  scroll-snap-align: start;
+}
+
+.history-photo img {
+  display: block;
+  height: clamp(14rem, 28vw, 18rem);
+  width: auto;
+  max-width: 100%;
+  padding: 0.5rem;
+  background: var(--his-light);
+}
+
+.history-photo figcaption {
+  max-width: 24rem;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-light-muted);
+}
+
+.history-photo b {
+  display: block;
+  margin-bottom: 0.15rem;
+  font: 600 1.1rem var(--display);
+  color: var(--secondary);
+}
+
+.history-strip:focus-visible, .history-gallery__nav button:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+/* ---------- Pastors ---------- */
+
+.history-note {
+  margin: 1rem 0 0;
+  color: var(--text-muted);
+}
+
+.history-pastors {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.history-pastors li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.25rem 2rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.history-pastors__name {
+  font: 600 1.3rem/1.2 var(--display);
+}
+
+.history-pastors__dates {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.history-pastors .is-current .history-pastors__dates {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- Written histories ---------- */
+
+.history-writings {
+  background: var(--wash);
+}
+
+.history-docs {
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history-docs li {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.history-docs li:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.history-docs a {
+  display: block;
+  font: 600 1.4rem/1.25 var(--display);
+}
+
+.history-docs span {
+  color: var(--text-muted);
+}
+
+/* ---------- Underground Railroad ---------- */
+
+.history-ugrr__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 2rem clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.history-ugrr h2 {
+  margin-bottom: 1.25rem;
+}
+
+.history-ugrr p {
+  margin: 0 0 1.25rem;
+}
+
+.history-video {
+  aspect-ratio: 16 / 9;
+  background: var(--black);
+  border: 1px solid var(--rule-light);
+}
+
+.history-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .history-split, .history-ugrr__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .history-hero__year {
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .history-keydates strong {
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,152 @@
+/* Our Congregation page. Scoped by .page-congregation or .congregation-* classes. */
+.page-congregation {
+  font: 400 1.0625rem/1.75 var(--display);
+  color: var(--text);
+  background: var(--paper);
+}
+
+/* ---------- Footer skin ---------- */
+
+.page-congregation .site-footer {
+  background: var(--wash);
+  font-family: var(--sans);
+}
+
+.page-congregation .site-footer__name {
+  font-family: var(--display);
+}
+
+/* ---------- Hero ---------- */
+
+.congregation-hero {
+  padding: clamp(4rem, 9vw, 8rem) var(--site-gutter) clamp(3rem, 6vw, 5rem);
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.congregation-wrap {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.congregation-hero h1 {
+  margin: 4rem 0 1.75rem;
+  font: 400 clamp(3.25rem, 10vw, 7.5rem)/0.98 var(--display-secondary);
+  letter-spacing: -0.02em;
+}
+
+.congregation-hero h1 em {
+  color: var(--secondary);
+}
+
+.congregation-lede {
+  max-width: 46rem;
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--text-light-muted);
+}
+
+/* ---------- Sections ---------- */
+
+.congregation-section {
+  padding: clamp(3.5rem, 8vw, 6.5rem) var(--site-gutter);
+}
+
+.congregation-section--wash {
+  background: var(--wash);
+}
+
+.congregation-section--dark {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.congregation-split {
+  display: grid;
+  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  gap: 1.5rem clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.congregation-section h2 {
+  margin: 0;
+  font: 400 clamp(2.25rem, 4.5vw, 3.25rem)/1.05 var(--display-secondary);
+  letter-spacing: -0.015em;
+}
+
+.congregation-section--dark h2 em {
+  color: var(--secondary);
+}
+
+.congregation-prose {
+  max-width: 44rem;
+}
+
+.congregation-prose p {
+  margin: 0 0 1.5rem;
+}
+
+.congregation-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.congregation-prose a {
+  text-underline-offset: 3px;
+}
+
+.congregation-prose a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (min-width: 901px) {
+  .congregation-split > h2 {
+    position: sticky;
+    top: calc(var(--site-nav-h) + 2rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .congregation-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Outreach efforts ---------- */
+
+.congregation-efforts {
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.congregation-efforts li {
+  border-top: 1px solid var(--rule-light);
+}
+
+.congregation-efforts a {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  font: 400 clamp(1.5rem, 2.6vw, 2rem)/1.2 var(--display-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.congregation-efforts a::after {
+  content: "\2192";
+  font-family: var(--sans);
+  font-size: 0.8em;
+  color: var(--secondary);
+}
+
+.congregation-efforts a:hover {
+  color: var(--secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .congregation-efforts a { transition: none; }
+}
