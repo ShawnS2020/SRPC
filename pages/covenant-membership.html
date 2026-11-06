@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Our Congregation | Southfield Reformed Presbyterian Church</title>
+  <title>Covenant of Communicant Membership | Southfield Reformed Presbyterian Church</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@500;600&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="js/theme.js"></script>
-  <link rel="stylesheet" href="css/site.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/congregation.css">
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/resource.css">
 </head>
-<body class="page-congregation">
+<body class="page-resource">
 
   <!-- NAV -->
 
@@ -24,7 +24,7 @@
         <li class="site-nav__item site-nav__item--dropdown">
           <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-who-we-are">Who We Are <span class="site-nav__caret" aria-hidden="true"></span></button>
           <ul class="site-nav__dropdown" id="site-menu-who-we-are">
-            <li><a class="site-nav__sublink" href="our-congregation.html" aria-current="page">Our Congregation</a></li>
+            <li><a class="site-nav__sublink" href="our-congregation.html">Our Congregation</a></li>
             <li><a class="site-nav__sublink" href="our-leadership.html">Our Leadership</a></li>
             <li><a class="site-nav__sublink" href="our-denomination.html">Our Denomination</a></li>
             <li><a class="site-nav__sublink" href="our-history.html">Our History</a></li>
@@ -54,7 +54,7 @@
         <li class="site-nav__item site-nav__item--dropdown site-nav__item--right">
           <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-resources">Resources <span class="site-nav__caret" aria-hidden="true"></span></button>
           <ul class="site-nav__dropdown" id="site-menu-resources">
-            <li><a class="site-nav__sublink" href="covenant-membership.html">Covenant of Communicant Membership</a></li>
+            <li><a class="site-nav__sublink" href="covenant-membership.html" aria-current="page">Covenant of Communicant Membership</a></li>
             <li><a class="site-nav__sublink" href="covenant-baptism.html">Covenant of Baptism</a></li>
             <li><a class="site-nav__sublink" href="ordination-vows.html">Ordination Vows</a></li>
             <li><a class="site-nav__sublink" href="sabbath-guide.html">Sabbath Resource Guide</a></li>
@@ -67,54 +67,47 @@
 
   <!-- HEADER -->
 
-  <header class="congregation-hero" id="top" data-nav-theme="dark">
-    <div class="congregation-wrap">
-      <h1>Our <em>Congregation</em></h1>
-      <p class="congregation-lede">We are a congregation of Christian disciples hailing from a variety of backgrounds, united in our love for the Triune God of Scripture, whose glory shines in the face of Jesus Christ. “We love Him because He first loved us” (1 Jn. 4:19).</p>
+  <header class="resource-hero" id="top" data-nav-theme="dark">
+    <div class="resource-hero__inner">
+      <h1>Covenant of <em>Communicant Membership</em></h1>
+      <p class="resource-lede">The RPCNA Covenant of Communicant Membership is as follows:</p>
+      <nav class="covenant-index" aria-label="Vows">
+        <a href="#vow-1" aria-label="Vow 1">1</a>
+        <a href="#vow-2" aria-label="Vow 2">2</a>
+        <a href="#vow-3" aria-label="Vow 3">3</a>
+        <a href="#vow-4" aria-label="Vow 4">4</a>
+        <a href="#vow-5" aria-label="Vow 5">5</a>
+        <a href="#vow-6" aria-label="Vow 6">6</a>
+        <a href="#vow-7" aria-label="Vow 7">7</a>
+      </nav>
+      <p class="covenant-siblings">See also: <a href="covenant-baptism.html">Covenant of Baptism</a> and <a href="ordination-vows.html">Ordination Vows</a></p>
     </div>
   </header>
 
   <main>
 
-    <!-- Membership -->
+    <!-- The vows -->
 
-    <section class="congregation-section" data-nav-theme="light">
-      <div class="congregation-wrap congregation-split">
-        <h2>Our Membership</h2>
-        <div class="congregation-prose">
-          <p>As born-again believers, we are invisibly united to Jesus Christ and to each other through faith in Him. As an organized Christian congregation, we also enjoy the visible unity expressed in our <a href="covenant-membership.html">Covenant of Communicant Membership</a>.</p>
-          <p>We make it a practice to publicly renew our covenant every January in connection with the Lord’s Supper. For a more thorough analysis of the nature and importance of church membership, we recommend listening to our pastor’s <a href="https://www.sermonaudio.com/series/48477">8-part sermon series</a> explaining our membership vows from Scripture, along with some additional articles by Rev. Stephen Pribble: <a href="church-membership.html">“Is Church Membership Optional?”</a> and <a href="choosing-a-church.html">“Choosing a Church”</a>.</p>
-        </div>
+    <section class="resource-section" data-nav-theme="light">
+      <div class="resource-wrap">
+        <ol class="covenant-vows">
+          <li id="vow-1">Do you believe the Scriptures of the Old and New Testaments to be the Word of God, the only infallible rule for faith and life?</li>
+          <li id="vow-2">Do you believe in the one living and true God — Father, Son, and Holy Spirit, as revealed in the Scriptures?</li>
+          <li id="vow-3">Do you repent of your sin; confess your guilt and helplessness as a sinner against God; profess Jesus Christ, Son of God, as your Saviour and Lord; and dedicate yourself to His service: Do you promise that you will endeavor to forsake all sin, and to conform your life to His teaching and example?</li>
+          <li id="vow-4">Do you promise to submit in the Lord to the teaching and government of this church as being based upon the Scriptures and described in substance in the Constitution of the Reformed Presbyterian Church of North America? Do you recognize your responsibility to work with others in the church and do you promise to support and encourage them in their service to the Lord? In case you should need correction in doctrine or life, do you promise to respect the authority and discipline of the church?</li>
+          <li id="vow-5">To the end that you may grow in the Christian life, do you promise that you will diligently read the Bible, engage in private prayer, keep the Lord’s Day, regularly attend the worship services, observe the appointed sacraments, and give to the Lord’s work as He shall prosper you?</li>
+          <li id="vow-6">Do you purpose to seek first the kingdom of God and His righteousness in all the relationships of life, faithfully to perform your whole duty as a true servant of Jesus Christ, and seek to win others to Him?</li>
+          <li id="vow-7">Do you make this profession of faith and purpose in the presence of God, in humble reliance upon His grace, as you desire to give your account with joy at the Last Great Day?</li>
+        </ol>
       </div>
     </section>
 
-    <!-- Children -->
+    <!-- Sermon series -->
 
-    <section class="congregation-section congregation-section--wash" data-nav-theme="light">
-      <div class="congregation-wrap congregation-split">
-        <h2>Our Children</h2>
-        <div class="congregation-prose">
-          <p>Following the pattern of Scripture, we regard the children of our adult members as part of Christ’s kingdom (Lk. 18:16) and worthy recipients of baptism as a visible sign and seal of God’s covenant of grace (Gen. 17:7; Acts 2:39).</p>
-          <p>While we do not presume our baptized children to be elect or regenerate, we do acknowledge them as true members of Christ’s visible church. As such, they are rightful heirs to the oracles and promises of God (Rom. 3:1-2), which we pray will “lead them to repentance” (Rom. 2:4), and “make them wise for salvation through faith which is in Christ Jesus” (2 Tim. 3:15).</p>
-          <p>Whenever a covenant child is baptized, we also require his or her parents to renew their membership vows and to affirm our <a href="covenant-baptism.html">Covenant of Baptism</a>. In order for baptized members to become communicant members (and so gain access to the Lord’s Table), we require them to make an outwardly credible profession of faith in Jesus Christ by affirming our <a href="covenant-membership.html">Covenant of Communicant Membership</a>. To learn more about the status of children in the New Covenant, <a href="infant-baptism.html">click here</a>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Outreach -->
-
-    <section class="congregation-section congregation-section--dark" data-nav-theme="dark">
-      <div class="congregation-wrap congregation-split">
-        <h2>Salt <em>and</em> Light</h2>
-        <div class="congregation-prose">
-          <p>We believe that every church member eventually has a role to play as “salt” and “light” in this dark and decaying world. Fundamentally, this involves faithfulness to Christ in our most basic duties in the home, the workplace, the classroom, the pew, and the public square. In addition, God often provides unique opportunities to more actively promote His glorious agenda in the world. Along these lines, we currently have members involved in the following efforts:</p>
-          <ul class="congregation-efforts">
-            <li><a href="https://www.sfoi.org">Sports Fan Outreach International</a></li>
-            <li><a href="https://exclusivepsalmodychurches.wordpress.com/">Exclusive Psalmody Churches</a></li>
-            <li><a href="https://www.liveaction.org/news/the-teenage-life-club-strikes-again-with-advice-for-teens">The Teenage Life Club</a></li>
-            <li><a href="https://www.rpglobalmissions.org/shortterm">RP Missions: Christian Mission Trips</a></li>
-          </ul>
-        </div>
+    <section class="resource-section resource-section--dark" data-nav-theme="dark">
+      <div class="resource-wrap">
+        <h2>Listen to our pastor’s 8-part sermon series explaining these vows.</h2>
+        <iframe class="covenant-series" title="Covenant Membership Vows sermon series" height="540" src="https://embed.sermonaudio.com/browser/broadcaster/srpc/series/Covenant%20Membership%20Vows/?sort=oldest&amp;page_size=25&amp;dark=true" allow="autoplay" scrolling="no" loading="lazy"></iframe>
       </div>
     </section>
   </main>
@@ -131,7 +124,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js"></script>
-  <script src="js/nav-theme.js"></script>
+  <script src="../js/site.js"></script>
+  <script src="../js/nav-theme.js"></script>
 </body>
 </html>

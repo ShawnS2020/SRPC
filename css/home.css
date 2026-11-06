@@ -1,0 +1,10 @@
+/* Temporary home page (index.html): navbar only, over a full-screen backdrop. Scoped by .page-home or .home-* classes. */
+.page-home {
+  background: var(--primary);
+}
+
+.home-placeholder {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--primary);
+}

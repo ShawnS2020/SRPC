@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Southfield Reformed Presbyterian Church</title>
+  <!-- Temporary home page: navbar only. Pages live in pages/; this file stays at the root so a server finds it. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@500;600&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body class="page-home">
+
+  <!-- NAV -->
+
+  <nav class="site-nav site-nav--dark" id="site-nav" aria-label="Main">
+    <div class="site-nav__bar">
+      <a class="site-nav__brand" href="#top">Southfield Reformed<br>Presbyterian Church</a>
+      <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="site-nav__menu" id="site-menu">
+        <li class="site-nav__item site-nav__item--dropdown">
+          <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-who-we-are">Who We Are <span class="site-nav__caret" aria-hidden="true"></span></button>
+          <ul class="site-nav__dropdown" id="site-menu-who-we-are">
+            <li><a class="site-nav__sublink" href="pages/our-congregation.html">Our Congregation</a></li>
+            <li><a class="site-nav__sublink" href="pages/our-leadership.html">Our Leadership</a></li>
+            <li><a class="site-nav__sublink" href="pages/our-denomination.html">Our Denomination</a></li>
+            <li><a class="site-nav__sublink" href="pages/our-history.html">Our History</a></li>
+          </ul>
+        </li>
+        <li class="site-nav__item site-nav__item--dropdown">
+          <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-what-we-believe">What We Believe <span class="site-nav__caret" aria-hidden="true"></span></button>
+          <ul class="site-nav__dropdown" id="site-menu-what-we-believe">
+            <li><a class="site-nav__sublink" href="pages/scriptural-doctrine.html">Scriptural Doctrine</a></li>
+            <li><a class="site-nav__sublink" href="pages/scriptural-worship.html">Scriptural Worship</a></li>
+            <li><a class="site-nav__sublink" href="pages/scriptural-living.html">Scriptural Living</a></li>
+            <li><a class="site-nav__sublink" href="pages/how-can-i-be-saved.html">How Can I Be Saved?</a></li>
+          </ul>
+        </li>
+        <li class="site-nav__item"><a class="site-nav__link" href="#">Worship With Us</a></li>
+        <li class="site-nav__item site-nav__item--dropdown site-nav__item--right">
+          <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-sermons">Sermons <span class="site-nav__caret" aria-hidden="true"></span></button>
+          <ul class="site-nav__dropdown" id="site-menu-sermons">
+            <li><a class="site-nav__sublink" href="https://www.sermonaudio.com/broadcasters/srpc/sermons/">Recently Preached</a></li>
+            <li><a class="site-nav__sublink" href="https://www.sermonaudio.com/series/30465">Communion Sermons</a></li>
+            <li><a class="site-nav__sublink" href="https://www.sermonaudio.com/series/153753">Epistle to the Romans</a></li>
+            <li><a class="site-nav__sublink" href="https://www.sermonaudio.com/series/30463">Evangelistic Sermons</a></li>
+            <li><a class="site-nav__sublink" href="https://www.sermonaudio.com/series/170606">Federal Vision (Lectures)</a></li>
+            <li><a class="site-nav__sublink" href="https://www.sermonaudio.com/series/30466">One-Off Sermons</a></li>
+          </ul>
+        </li>
+        <li class="site-nav__item site-nav__item--dropdown site-nav__item--right">
+          <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-resources">Resources <span class="site-nav__caret" aria-hidden="true"></span></button>
+          <ul class="site-nav__dropdown" id="site-menu-resources">
+            <li><a class="site-nav__sublink" href="pages/covenant-membership.html">Covenant of Communicant Membership</a></li>
+            <li><a class="site-nav__sublink" href="pages/covenant-baptism.html">Covenant of Baptism</a></li>
+            <li><a class="site-nav__sublink" href="pages/ordination-vows.html">Ordination Vows</a></li>
+            <li><a class="site-nav__sublink" href="pages/sabbath-guide.html">Sabbath Resource Guide</a></li>
+          </ul>
+        </li>
+        <li class="site-nav__item"><a class="site-nav__link" href="pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Placeholder: an empty backdrop so the navbar has something to sit on -->
+
+  <main class="home-placeholder" id="top" data-nav-theme="dark"></main>
+
+  <script src="js/site.js"></script>
+  <script src="js/nav-theme.js"></script>
+</body>
+</html>

@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scriptural Doctrine | Southfield Reformed Presbyterian Church</title>
+  <title>Our Leadership | Southfield Reformed Presbyterian Church</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@500;600&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="js/theme.js"></script>
-  <link rel="stylesheet" href="css/site.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/doctrine.css">
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/leadership.css">
 </head>
-<body class="page-doctrine">
+<body class="page-leadership">
+
+  <!-- NAV -->
+
   <nav class="site-nav site-nav--dark" id="site-nav" aria-label="Main">
     <div class="site-nav__bar">
       <a class="site-nav__brand" href="#top">Southfield Reformed<br>Presbyterian Church</a>
@@ -22,7 +25,7 @@
           <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-who-we-are">Who We Are <span class="site-nav__caret" aria-hidden="true"></span></button>
           <ul class="site-nav__dropdown" id="site-menu-who-we-are">
             <li><a class="site-nav__sublink" href="our-congregation.html">Our Congregation</a></li>
-            <li><a class="site-nav__sublink" href="our-leadership.html">Our Leadership</a></li>
+            <li><a class="site-nav__sublink" href="our-leadership.html" aria-current="page">Our Leadership</a></li>
             <li><a class="site-nav__sublink" href="our-denomination.html">Our Denomination</a></li>
             <li><a class="site-nav__sublink" href="our-history.html">Our History</a></li>
           </ul>
@@ -30,7 +33,7 @@
         <li class="site-nav__item site-nav__item--dropdown">
           <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-what-we-believe">What We Believe <span class="site-nav__caret" aria-hidden="true"></span></button>
           <ul class="site-nav__dropdown" id="site-menu-what-we-believe">
-            <li><a class="site-nav__sublink" href="scriptural-doctrine.html" aria-current="page">Scriptural Doctrine</a></li>
+            <li><a class="site-nav__sublink" href="scriptural-doctrine.html">Scriptural Doctrine</a></li>
             <li><a class="site-nav__sublink" href="scriptural-worship.html">Scriptural Worship</a></li>
             <li><a class="site-nav__sublink" href="scriptural-living.html">Scriptural Living</a></li>
             <li><a class="site-nav__sublink" href="how-can-i-be-saved.html">How Can I Be Saved?</a></li>
@@ -62,58 +65,37 @@
     </div>
   </nav>
 
-  <main id="top">
+  <!-- HEADER -->
 
-    <!-- Header -->
+  <header class="leadership-hero" id="top" data-nav-theme="dark">
+    <div class="leadership-wrap">
+      <h1>Our <em>Leadership</em></h1>
+    </div>
+  </header>
 
-    <section class="doctrine-hero" data-nav-theme="dark">
-      <figure class="doctrine-art">
-        <img
-          src="assets/images/westminster-assembly.jpg"
-          alt="Painting of the Westminster Assembly of Divines in session in 1644, with theologians and members of Parliament seated on either side of a long hall."
-          width="851" height="547" fetchpriority="high"
-          onerror="this.closest('.doctrine-art').classList.add('is-missing')">
-        <figcaption>
-          <cite>Assertion of Liberty of Conscience by the Independents of the Westminster Assembly of Divines, 1644</cite>, John Rogers Herbert, 1847. Palace of Westminster.
-        </figcaption>
-      </figure>
+  <main>
 
-      <div class="doctrine-hero__inner">
-        <h1>Scriptural <em>Doctrine</em></h1>
-        <p class="lede">As followers of the Lord Jesus Christ, we are committed to the historic doctrines of Biblical Christianity, as revealed in the Bible (2&nbsp;Tim.&nbsp;3:16–17). Relying exclusively upon God’s infallible Word, we boldly confess that:</p>
-      </div>
-    </section>
+    <!-- Elders -->
 
-    <!-- Body -->
-
-    <section class="doctrine-body" data-nav-theme="light">
-      <div class="doctrine-wrap">
-        <ul class="doctrine-solas">
+    <section class="leadership-elders" data-nav-theme="light">
+      <div class="leadership-wrap">
+        <h2>Our Elders</h2>
+        <ul class="leadership-trio">
           <li>
-            <strong>Scripture alone</strong>
-            <span>is our all-sufficient, inspired, inerrant, and infallible authority for every aspect of doctrine, worship, ministry, and ethics.</span>
+            <img class="leadership-portrait" src="../assets/images/adam-kuehner.webp" alt="" width="560" height="547">
+            <strong>Adam Kuehner</strong> Pastor
           </li>
           <li>
-            <strong>Grace alone</strong>
-            <span>is the basis upon which the Triune God freely chooses, redeems, regenerates, forgives, and transforms hell-deserving sinners into heaven-bound saints.</span>
+            <img class="leadership-portrait" src="../assets/images/jon-hughes.webp" alt="" width="100" height="150">
+            <strong>Jon Hughes</strong> Ruling Elder
           </li>
           <li>
-            <strong>Christ alone</strong>
-            <span>(as the God-man Mediator) redeems lost sinners by the infinite merit of His perfect obedience, His atoning death, and His victorious resurrection.</span>
-          </li>
-          <li>
-            <strong>Faith alone</strong>
-            <span>is the instrument or means whereby we must receive Christ and His spotless, blood-bought righteousness for our justification.</span>
-          </li>
-          <li>
-            <strong>Glory be to God alone</strong>
-            <span>for sovereignly planning, accomplishing, and applying every aspect of human salvation to His people, from start to finish, such that He says, “I will not give My glory to another!” (Isa.&nbsp;48:11) and such that we must say, “Not unto us, O LORD, not unto us, but to Your name give glory” (Ps.&nbsp;115:1).</span>
+            <img class="leadership-portrait" src="../assets/images/john-kim.webp" alt="" width="86" height="134">
+            <strong>John Kim</strong> Ruling Elder
           </li>
         </ul>
-
-        <div class="doctrine-creed">
-          <p>Based upon our own understanding of God’s Word, we happily embrace as our creed the <a href="https://reformedstandards.com/westminster/wcf">Westminster Confession of Faith</a> along with the <a href="https://reformedstandards.com/westminster/wlc">Larger</a> and <a href="https://reformedstandards.com/westminster/wsc">Shorter Catechisms</a>. We also adhere to the <a href="https://crownandcovenant.com/products/current-rpcna-constitution-pdf-download">Testimony of the Reformed Presbyterian Church of North America</a> as an ongoing application of the Scriptures to contemporary life. For a more detailed treatment of the sufficiency and reliability of the Scriptures, we recommend listening to our pastor’s <a href="https://www.sermonaudio.com/series/30468">Theological Foundations Afternoon</a> lessons entitled, <a href="#">Five Reasons to Trust Your Bible</a> and <a href="https://www.sermonaudio.com/sermons/98132315443">Five Reasons for Six Day Creation</a>.</p>
-        </div>
+        <p class="leadership-elders__text">Our congregation is governed by our pastor and two ruling elders. All three were elected by the members of our congregation and carry equal authority as overseers of Christ’s flock. A complete list of their ordination vows is <a href="ordination-vows.html">available here</a>.</p>
+        <p class="leadership-elders__text">Pastor Adam Kuehner was raised in a Christian home, where he trusted Jesus Christ as his personal Savior and Lord from an early age. After receiving his Master of Divinity degree from <a href="https://rpts.edu/">Reformed Presbyterian Theological Seminary</a>, Adam was ordained as our pastor in 2012. His hobbies include reading, drinking coffee and tea, watching/playing baseball, and spending quality time with his family.</p>
       </div>
     </section>
   </main>
@@ -130,7 +112,7 @@
     </div>
   </footer>
 
-  <script src="js/site.js"></script>
-  <script src="js/nav-theme.js"></script>
+  <script src="../js/site.js"></script>
+  <script src="../js/nav-theme.js"></script>
 </body>
 </html>
