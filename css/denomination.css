@@ -191,7 +191,7 @@
 
 .denomination-courts li:nth-child(2) {
   width: 80%;
-  background: var(--teal);
+  background: var(--primary-mid);
   color: var(--text-light);
 }
 

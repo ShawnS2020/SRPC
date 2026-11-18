@@ -1,6 +1,5 @@
 /* Long-form written histories (history-thompson.html, history-edgar.html). Scoped by .page-histdoc or .histdoc-* classes. */
 .page-histdoc {
-  --hd-accent: var(--text-accent);
   font: 400 1.125rem/1.8 var(--display);
   color: var(--text);
   background: var(--paper);
@@ -138,7 +137,7 @@
 .histdoc-toc a:hover,
 .histdoc-toc a.active {
   color: var(--text-accent);
-  border-left-color: var(--hd-accent);
+  border-left-color: var(--text-accent);
 }
 
 /* ---------- Reading column ---------- */

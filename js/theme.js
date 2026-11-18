@@ -4,6 +4,7 @@
   const THEMES = [
     { id: 'evergreen', name: 'Evergreen', swatches: ['#0a2521', '#1c5b53', '#a5ff9f'] },
     { id: 'oxblood', name: 'Oxblood', swatches: ['#2b0d12', '#832732', '#f4cf9a'] },
+    { id: 'midnight', name: 'Midnight', swatches: ['#0e1b2e', '#2b5c8a', '#f0cf7a'] },
   ];
   const KEY = 'srpc-theme';
   const root = document.documentElement;

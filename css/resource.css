@@ -1,6 +1,5 @@
 /* Pages under the Resources menu, plus infant-baptism.html and the Pribble articles. Scoped by .page-resource, or .resource-* / .covenant-* / .baptism-* / .article-* classes. */
 .page-resource {
-  --res-accent: var(--text-accent);
   font: 400 1.0625rem/1.75 var(--display);
   color: var(--text);
   background: var(--paper);

@@ -15,7 +15,7 @@ assets/images/  assets/docs/ (PDFs, linked directly)
 
 **Naming rules**
 - `site-*` classes and `--site-*` variables are shared (navbar, footer, gutter, nav height).
-- `doctrine-*` / `worship-*` classes and `--doc-*` / `--wor-*` variables belong to one page only.
+- `doctrine-*` / `worship-*` classes belong to one page only. Page stylesheets use the shared tokens in `css/site.css` directly; only genuinely page-specific values get a prefixed variable (e.g. `--sav-*` on the saved page).
 - Each page sets `<body class="page-doctrine">` or `page-worship`; page "skins" for the shared navbar and footer are scoped under that class.
 - State classes: `is-open`, `is-engaged`, `is-mobile-open`, `is-missing`.
 - New pages go in `pages/` and must prefix shared files with `../` (`../css/site.css`, `../js/theme.js`, `../assets/images/...`). Paths inside `css/` files are relative to the CSS file, so they don't change.

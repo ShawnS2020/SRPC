@@ -1,12 +1,5 @@
-/* Scriptural Doctrine page. Everything is scoped by .page-doctrine, --doc-* variables, or .doctrine-* classes. */
+/* Scriptural Doctrine page. Everything is scoped by .page-doctrine or .doctrine-* classes. */
 .page-doctrine {
-  /* --doc-primary: #103933; */
-  --doc-primary: var(--text-accent);
-  --doc-secondary: var(--primary);
-  --doc-stone: var(--stone);
-  /* --doc-stone: #ebe6dc; */
-  --doc-serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
-  --wor-display: "Instrument Serif", Georgia, serif;
   font-family: var(--display);
   font-size: 1.125rem;
   line-height: 1.7;
@@ -33,7 +26,7 @@
   position: relative;
   min-height: min(78vh, 52rem);
   padding: clamp(4rem, 9vw, 8rem) var(--site-gutter);
-  background: var(--doc-secondary);
+  background: var(--primary);
   color: var(--text-light);
 }
 
@@ -46,7 +39,7 @@
 
 .doctrine-hero h1 {
   margin: 4rem 0 1.75rem;
-  font: 400 clamp(3rem, 7vw, 6rem) / 0.95 var(--wor-display);
+  font: 400 clamp(3rem, 7vw, 6rem) / 0.95 var(--display-secondary);
   letter-spacing: -0.025em;
 }
 
@@ -195,7 +188,7 @@
 
 .doctrine-body a:focus-visible,
 .page-doctrine .site-footer a:focus-visible {
-  outline: 2px solid var(--doc-primary);
+  outline: 2px solid var(--text-accent);
   outline-offset: 3px;
 }
 

@@ -1,6 +1,5 @@
-/* Scriptural Living page. Everything is scoped by .page-living, --liv-* variables, or .living-* classes. */
+/* Scriptural Living page. Everything is scoped by .page-living or .living-* classes. */
 .page-living {
-  --liv-accent: var(--text-accent);
   font: 400 1.0625rem/1.75 var(--display);
   color: var(--text);
   background: var(--paper);
@@ -91,7 +90,7 @@
 }
 
 .living-section--king {
-  background: var(--liv-accent);
+  background: var(--text-accent);
   color: var(--text-light);
 }
 
@@ -313,7 +312,7 @@
   margin: 0;
   padding: 1.5rem 1.75rem;
   background: var(--wash);
-  border-left: 4px solid var(--liv-accent);
+  border-left: 4px solid var(--text-accent);
   border-radius: 0 10px 10px 0;
 }
 

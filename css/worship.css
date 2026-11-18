@@ -1,6 +1,5 @@
-/* Scriptural Worship page. Everything is scoped by .page-worship, --wor-* variables, or .worship-* classes. */
+/* Scriptural Worship page. Everything is scoped by .page-worship or .worship-* classes. */
 .page-worship {
-  --wor-accent: var(--text-accent);
   font: 400 1.0625rem/1.75 var(--sans); color: var(--text); background: var(--surface);
   background-color: var(--paper);
 }
@@ -102,7 +101,7 @@
 
 .worship-toc a:hover, .worship-toc a.active {
   color: var(--text-accent);
-  border-left-color: var(--wor-accent);
+  border-left-color: var(--text-accent);
 }
 
 .worship-faq {
@@ -141,7 +140,7 @@
 .worship-aside {
   padding: 1.5rem 1.75rem;
   background: var(--wash);
-  border-left: 4px solid var(--wor-accent);
+  border-left: 4px solid var(--text-accent);
   border-radius: 0 10px 10px 0; 
 }
 
@@ -168,7 +167,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--wor-accent);
+  background: var(--text-accent);
   color: var(--text-light);
   font: 600 0.95rem var(--sans);
 }

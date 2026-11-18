@@ -537,8 +537,8 @@ html:not(.js) .saved-strikes span { background-size: 100% 0.07em; }
   background: linear-gradient(to bottom,
     var(--night) 0%,
     var(--primary) 18%,
-    var(--teal) 40%,
-    color-mix(in srgb, var(--teal) 45%, var(--brass)) 54%,
+    var(--primary-mid) 40%,
+    color-mix(in srgb, var(--primary-mid) 45%, var(--brass)) 54%,
     var(--brass) 64%,
     var(--his-light) 80%,
     var(--paper) 100%);
