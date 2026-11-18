@@ -2,8 +2,6 @@
 (() => {
   const nav = document.getElementById('site-nav');
   const targets = [...document.querySelectorAll('[data-nav-theme]')];
-  console.log(nav);
-  console.log(targets);
   let mid = 0;
   let ticking = false;
 
