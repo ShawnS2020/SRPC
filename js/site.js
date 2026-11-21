@@ -1,4 +1,4 @@
-/* Shared across pages: navbar dropdowns, mobile menu, footer year. */
+/* Shared across pages: navbar dropdowns, mobile menu, footer year and copy buttons. */
 (() => {
   const nav = document.getElementById('site-nav');
   if (nav) {
@@ -56,4 +56,20 @@
   }
 
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  // Footer "Copy" buttons: copy the value and confirm on the button itself.
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    const label = btn.textContent;
+    let timer;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        btn.textContent = 'Copied';
+      } catch {
+        btn.textContent = 'Copy failed';
+      }
+      clearTimeout(timer);
+      timer = setTimeout(() => { btn.textContent = label; }, 2000);
+    });
+  });
 })();

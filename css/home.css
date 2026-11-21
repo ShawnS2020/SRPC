@@ -1,10 +1,741 @@
-/* Temporary home page (index.html): navbar only, over a full-screen backdrop. Scoped by .page-home or .home-* classes. */
+/* Home page (index.html). Scoped by .page-home or .home-* classes. */
 .page-home {
-  background: var(--primary);
+  font: 400 1.0625rem/1.75 var(--display);
+  color: var(--text);
+  background: var(--paper);
 }
 
-.home-placeholder {
+.page-home a:not(.site-nav__brand, .site-nav__link, .site-nav__sublink):focus-visible,
+.page-home button:not(.site-nav__link, .site-nav__toggle):focus-visible,
+.page-home summary:focus-visible,
+.home-panel:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* ---------- Footer skin ---------- */
+
+.page-home .site-footer {
+  background: var(--wash);
+  font-family: var(--sans);
+}
+
+.page-home .site-footer__name {
+  font-family: var(--display);
+}
+
+/* ---------- Shared pieces ---------- */
+
+.home-wrap {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.home-kicker {
+  margin: 0 0 1rem;
+  font: 600 0.8rem var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.home-kicker--dark {
+  color: var(--text-accent);
+}
+
+.page-home h2 {
+  margin: 0;
+  font: 400 clamp(2.5rem, 5vw, 3.75rem)/1 var(--display-secondary);
+  letter-spacing: -0.015em;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.home-btn {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--secondary);
+  background: var(--secondary);
+  color: var(--primary);
+  font: 600 0.95rem var(--sans);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.home-btn:hover {
+  background: transparent;
+  color: var(--secondary);
+}
+
+.home-btn--ghost {
+  border-color: var(--rule-light-strong);
+  background: transparent;
+  color: var(--text-light);
+}
+
+.home-btn--ghost:hover {
+  border-color: var(--secondary);
+}
+
+.home-more {
+  font: 600 0.95rem var(--sans);
+  color: var(--text-accent);
+  text-underline-offset: 4px;
+}
+
+.home-more::after {
+  content: " \2192";
+}
+
+.home-more--light {
+  color: var(--secondary);
+}
+
+/* ---------- Hero ---------- */
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 35% minmax(0, 1fr);
   min-height: 100vh;
   min-height: 100svh;
   background: var(--primary);
+  color: var(--text-light);
+}
+
+.home-hero__photo {
+  position: relative;
+  margin: 0;
+  background: var(--night);
+}
+
+.home-hero__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% center;
+}
+
+/* Darkens the top so the navbar brand stays readable over the sky. */
+.home-hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--site-nav-h) * 2.5);
+  background: linear-gradient(rgba(0, 0, 0, 0.55), transparent);
+}
+
+.home-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: calc(var(--site-nav-h) + 2rem) var(--site-gutter) 4rem clamp(1.5rem, 5vw, 5rem);
+}
+
+.home-hero h1 {
+  max-width: 15ch;
+  margin: 0 0 1.75rem;
+  font: 400 clamp(2.75rem, 5.5vw, 5rem)/0.98 var(--display-secondary);
+  letter-spacing: -0.02em;
+}
+
+.home-hero h1 em {
+  color: var(--secondary);
+}
+
+.home-hero__lede {
+  max-width: 36rem;
+  margin: 0 0 2.5rem;
+  font-size: clamp(1.1rem, 1.3vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-light-muted);
+}
+
+@media (max-width: 800px) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 46svh auto;
+  }
+
+  .home-hero__copy {
+    padding: 3rem var(--site-gutter) 4rem;
+  }
+}
+
+/* ---------- Latest sermon ---------- */
+
+.home-sermon {
+  padding: clamp(3rem, 6vw, 4.5rem) var(--site-gutter);
+  background: var(--panel-dark);
+  color: var(--text-light);
+}
+
+.home-sermon__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 2rem clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.home-sermon h2 em {
+  color: var(--secondary);
+}
+
+.home-sermon__text p {
+  max-width: 34rem;
+  margin: 1rem 0 1.25rem;
+  color: var(--text-light-muted);
+}
+
+.home-sermon__text p a {
+  color: var(--secondary);
+  text-underline-offset: 3px;
+}
+
+.home-sermon__series {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.home-sermon__series a {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--rule-light-strong);
+  border-radius: 999px;
+  font: 600 0.85rem var(--sans);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.home-sermon__series a:hover {
+  background: var(--hover-tint-light);
+}
+
+.home-sermon__player {
+  display: block;
+  width: 100%;
+  min-width: 150px;
+  border: 0;
+}
+
+@media (max-width: 800px) {
+  .home-sermon__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Welcome + tabs ---------- */
+
+.home-intro {
+  padding: clamp(4rem, 8vw, 6.5rem) var(--site-gutter);
+  text-align: center;
+}
+
+.home-quote {
+  max-width: 30ch;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  font: 400 clamp(1.9rem, 3.6vw, 3rem)/1.15 var(--display-secondary);
+  text-wrap: balance;
+}
+
+.home-tabs {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  max-width: 48rem;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--rule);
+}
+
+.home-tab {
+  margin-bottom: -1px;
+  padding: 0.6rem 0.25rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  font: 400 clamp(1.4rem, 2.4vw, 1.85rem) var(--display-secondary);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.home-tab:hover {
+  color: var(--text-accent);
+}
+
+.home-tab[aria-selected="true"] {
+  border-bottom-color: var(--text-accent);
+  color: var(--text-accent);
+}
+
+.home-panel {
+  max-width: 62rem;
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+  text-align: left;
+}
+
+.home-who {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 2.5rem clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.home-prose p {
+  margin: 0 0 1.5rem;
+}
+
+.home-prose a:not(.home-more) {
+  color: var(--text-accent);
+  text-underline-offset: 3px;
+}
+
+.home-prose h3 {
+  margin: 2rem 0 0.75rem;
+  font: 400 1.85rem/1.1 var(--display-secondary);
+}
+
+.home-facts {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 1.75rem;
+  border-top: 3px solid var(--primary-mid);
+  background: var(--wash);
+}
+
+.home-facts dt {
+  font: 600 0.75rem var(--sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.home-facts dd {
+  margin: 0.15rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.home-acc {
+  border-top: 1px solid var(--rule);
+}
+
+.home-acc details {
+  border-bottom: 1px solid var(--rule);
+}
+
+.home-acc summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 0.25rem;
+  font: 400 clamp(1.45rem, 2.4vw, 1.85rem)/1.2 var(--display-secondary);
+  list-style: none;
+  cursor: pointer;
+}
+
+.home-acc summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-acc summary:hover {
+  color: var(--text-accent);
+}
+
+/* Plus that turns into a minus when open */
+.home-acc summary::after {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background:
+    linear-gradient(var(--text-accent), var(--text-accent)) center / 100% 2px no-repeat,
+    linear-gradient(var(--text-accent), var(--text-accent)) center / 2px 100% no-repeat;
+  transition: background-size 0.2s ease;
+}
+
+.home-acc details[open] summary::after {
+  background-size: 100% 2px, 2px 0;
+}
+
+.home-acc details p {
+  max-width: 44rem;
+  margin: 0 0 1.4rem;
+  padding: 0 0.25rem;
+}
+
+.home-acc__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 800px) {
+  .home-who {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Worship schedule ---------- */
+
+.home-sched {
+  padding: clamp(4rem, 8vw, 6.5rem) var(--site-gutter);
+  background: var(--wash);
+}
+
+.home-sched__head {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.home-sched h2 em {
+  color: var(--text-accent);
+}
+
+.home-dot {
+  display: inline-block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.home-dot--worship {
+  background: var(--primary-mid);
+}
+
+.home-dot--class {
+  border: 2px solid var(--primary-mid);
+  background: var(--surface);
+}
+
+.home-dot--meal {
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 0;
+  background: var(--brass);
+  transform: rotate(45deg);
+}
+
+/* Summary card for the selected Sunday (filled by js/home.js) */
+.home-next {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 1.5rem 3rem;
+  align-items: center;
+  padding: 1.75rem 2rem;
+  border-top: 3px solid var(--primary);
+  background: var(--surface);
+}
+
+.home-next[hidden] {
+  display: none;
+}
+
+.home-next__label {
+  margin: 0 0 0.4rem;
+  font: 600 0.75rem var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+.home-next__date {
+  margin: 0;
+  font: 400 clamp(2rem, 3.4vw, 2.9rem)/1.05 var(--display-secondary);
+}
+
+.home-next__sub {
+  margin: 0.4rem 0 0;
+  color: var(--text-muted);
+}
+
+.home-next__back {
+  margin-top: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: 600 0.9rem var(--sans);
+  color: var(--text-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.home-next ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-next li {
+  display: grid;
+  grid-template-columns: 1.25rem 6rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 1.15rem;
+}
+
+.home-next li:last-child {
+  border-bottom: 0;
+}
+
+.home-next__time {
+  font: 600 0.95rem var(--sans);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.home-month {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.home-sun {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1.1rem 1.4rem;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  font: inherit;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.home-sun:hover {
+  border-color: var(--primary-mid);
+}
+
+.home-sun[aria-pressed="true"] {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.home-sun h3 {
+  margin: 0;
+  font: 400 1.6rem/1.1 var(--display-secondary);
+}
+
+.home-sun__badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.55rem;
+  background: var(--primary);
+  color: var(--text-light);
+  font: 600 0.65rem var(--sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.home-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-rail::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 7px;
+  width: 2px;
+  background: linear-gradient(var(--brass), var(--primary-mid));
+}
+
+.home-rail li {
+  position: relative;
+  padding-left: 1.9rem;
+}
+
+.home-rail .home-dot {
+  position: absolute;
+  top: 0.2rem;
+  left: 0;
+}
+
+.home-rail .home-dot--meal {
+  top: 0.3rem;
+}
+
+.home-rail__t {
+  display: block;
+  font: 600 0.8rem var(--sans);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.home-rail__n {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.home-sun__note {
+  margin-top: auto;
+  font: italic 0.9rem/1.3 var(--display);
+  color: var(--text-muted);
+}
+
+.home-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.75rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font: 400 0.95rem var(--sans);
+  color: var(--text-muted);
+}
+
+.home-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.home-midweek {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.home-midweek h3 {
+  margin: 0;
+  font: 400 1.85rem/1.1 var(--display-secondary);
+}
+
+.home-midweek p {
+  flex: 1 1 16rem;
+  margin: 0;
+  color: var(--text-light-muted);
+}
+
+.home-midweek a {
+  color: var(--secondary);
+  text-underline-offset: 3px;
+}
+
+.home-midweek .home-midweek__days {
+  display: flex;
+  flex: none;
+  gap: 0.6rem;
+}
+
+.home-midweek__days span {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--rule-light-strong);
+  font: 600 0.85rem var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+@media (max-width: 960px) {
+  .home-next {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-month {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Each Sunday becomes a row with a horizontal timeline. */
+  .home-rail {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .home-rail::before {
+    top: 7px;
+    right: 8px;
+    bottom: auto;
+    left: 8px;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brass), var(--primary-mid));
+  }
+
+  .home-rail li {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 1.7rem 0 0;
+  }
+
+  .home-rail .home-dot {
+    top: 0;
+  }
+
+  .home-rail .home-dot--meal {
+    top: 0;
+  }
+}
+
+/* ---------- History callout ---------- */
+
+.home-history {
+  padding: clamp(4.5rem, 10vw, 8rem) var(--site-gutter);
+  background: var(--primary);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.home-history h2 {
+  max-width: 18ch;
+  margin: 0 auto 1.75rem;
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+}
+
+.home-history h2 em {
+  color: var(--secondary);
+}
+
+.home-history p {
+  max-width: 42rem;
+  margin: 0 auto 2.5rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--text-light-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-btn,
+  .home-sun,
+  .home-acc summary::after {
+    transition: none;
+  }
 }

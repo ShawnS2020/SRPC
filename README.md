@@ -1,7 +1,7 @@
 # Southfield site
 
 ```
-index.html  temporary home page (navbar only, styled by home.css); stays at the root so a server serves it for the bare domain. Its paths have no ../ and its nav links into pages/
+index.html  home page (styled by home.css, tabs and worship schedule in home.js); stays at the root so a server serves it for the bare domain. Its paths have no ../ and its nav links into pages/
 pages/  every HTML page; they link to each other directly and reach css/, js/, assets/ through ../
   our-congregation.html   our-leadership.html   our-denomination.html   contact.html (Contact in the nav; worship times, location, phone, email)
   scriptural-doctrine.html   scriptural-worship.html   scriptural-living.html   how-can-i-be-saved.html
@@ -9,7 +9,7 @@ pages/  every HTML page; they link to each other directly and reach css/, js/, a
   infant-baptism.html   church-membership.html   choosing-a-church.html   (not in the nav; linked from Our Congregation, styled by resource.css)
   history-thompson.html   history-edgar.html   (not in the nav; linked from Our History > Written Histories, styled by history-doc.css)
 css/  site.css (tokens, themes, theme picker, reset, footer)  nav.css (shared navbar)  doctrine.css  worship.css  living.css  saved.css  contact.css  home.css  congregation.css  leadership.css  denomination.css  resource.css (all Resources pages)  history.css  history-doc.css (written histories)
-js/   site.js (navbar, footer year)  theme.js (theme picker; loaded in <head>)     nav-theme.js              worship.js  saved.js  history-doc.js
+js/   site.js (navbar, footer year)  theme.js (theme picker; loaded in <head>)     nav-theme.js   home.js   worship.js  saved.js  history-doc.js
 assets/images/  assets/docs/ (PDFs, linked directly)
 ```
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Southfield Reformed Presbyterian Church</title>
-  <!-- Temporary home page: navbar only. Pages live in pages/; this file stays at the root so a server finds it. -->
+  <!-- Home page. Pages live in pages/; this file stays at the root so a server finds it, so its paths have no ../ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@500;600&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@
             <li><a class="site-nav__sublink" href="pages/how-can-i-be-saved.html">How Can I Be Saved?</a></li>
           </ul>
         </li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#">Worship With Us</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="#worship">Worship With Us</a></li>
         <li class="site-nav__item site-nav__item--dropdown site-nav__item--right">
           <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="site-menu-sermons">Sermons <span class="site-nav__caret" aria-hidden="true"></span></button>
           <ul class="site-nav__dropdown" id="site-menu-sermons">
@@ -66,11 +66,236 @@
     </div>
   </nav>
 
-  <!-- Placeholder: an empty backdrop so the navbar has something to sit on -->
+  <!-- HERO: photo on the left, welcome on the right -->
 
-  <main class="home-placeholder" id="top" data-nav-theme="dark"></main>
+  <header class="home-hero" id="top" data-nav-theme="dark">
+    <figure class="home-hero__photo">
+      <img src="assets/images/church-building-5.webp" alt="The white clapboard church building with its arched windows and front entrance." width="322" height="217">
+    </figure>
+    <div class="home-hero__copy">
+      <p class="home-kicker">Southfield, Michigan</p>
+      <h1>Proclaiming Christ in Southfield <em>Since 1834</em></h1>
+      <p class="home-hero__lede">For nearly two centuries, we have gathered to worship God according to His Word, to grow in holiness, and to cultivate love and fellowship together, because Jesus Christ is the center of it all.</p>
+      <div class="home-actions">
+        <a class="home-btn" href="#worship">Worship With Us</a>
+        <a class="home-btn home-btn--ghost" href="pages/our-history.html">Our History</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Latest sermon -->
+
+    <section class="home-sermon" aria-labelledby="sermon-title" data-nav-theme="dark">
+      <div class="home-wrap home-sermon__inner">
+        <div class="home-sermon__text">
+          <h2 id="sermon-title">Latest <em>Sermons</em></h2>
+          <p>Hear the faithful exposition of God’s Word from our pulpit. Browse the full archive on <a href="https://www.sermonaudio.com/broadcasters/srpc/sermons/">SermonAudio</a>.</p>
+          <ul class="home-sermon__series">
+            <li><a href="https://www.sermonaudio.com/series/153753">Epistle to the Romans</a></li>
+            <li><a href="https://www.sermonaudio.com/series/30465">Communion Sermons</a></li>
+            <li><a href="https://www.sermonaudio.com/series/30463">Evangelistic Sermons</a></li>
+          </ul>
+          <a class="home-more home-more--light" href="https://www.sermonaudio.com/broadcasters/srpc/sermons/">View all sermons</a>
+        </div>
+        <!-- SermonAudio player for the broadcaster's most recent sermon; it updates itself as sermons are added. -->
+        <iframe class="home-sermon__player" title="Latest sermon from Southfield Reformed Presbyterian Church: audio player" height="150" src="https://embed.sermonaudio.com/player/a/broadcaster/srpc/?dark=true" scrolling="no" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Welcome: Who We Are / What We Believe -->
+
+    <section class="home-intro" id="about" data-nav-theme="light">
+      <div class="home-wrap">
+        <p class="home-kicker home-kicker--dark">Welcome to Our Church</p>
+        <blockquote class="home-quote">Our church exists to glorify God and to teach His people to enjoy Him forever.</blockquote>
+
+        <div class="home-tabs" role="tablist" aria-label="About our church">
+          <button class="home-tab" type="button" role="tab" id="tab-who" aria-selected="true" aria-controls="panel-who">Who We Are</button>
+          <button class="home-tab" type="button" role="tab" id="tab-what" aria-selected="false" aria-controls="panel-what" tabindex="-1">What We Believe</button>
+        </div>
+
+        <div class="home-panel" role="tabpanel" id="panel-who" aria-labelledby="tab-who" tabindex="0">
+          <div class="home-who">
+            <div class="home-prose">
+              <p>Southfield Reformed Presbyterian Church is a congregation of the <a href="pages/our-denomination.html">Reformed Presbyterian Church of North America</a> (RPCNA). We embrace the Scriptures of the Old and New Testaments as the inspired and inerrant Word of God, and we hold the Westminster Confession of Faith with the Larger and Shorter Catechisms as our standards.</p>
+              <h3>Our History</h3>
+              <p>In 1834, three years before Michigan gained its statehood, Scots-Irish settlers organized our congregation, the first church of any kind in Southfield. We still worship on Evergreen Road in the building raised in 1861, a small but energetic congregation continuing in the “old paths” of our godly forefathers.</p>
+              <a class="home-more" href="pages/our-congregation.html">More about our congregation</a>
+            </div>
+            <dl class="home-facts">
+              <div><dt>Denomination</dt><dd>RPCNA</dd></div>
+              <div><dt>Founded</dt><dd>1834</dd></div>
+              <div><dt>Standards</dt><dd>Westminster Confession and Catechisms</dd></div>
+              <div><dt>Lord’s Day worship</dt><dd>10:00 AM and 6:00 PM</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="home-panel" role="tabpanel" id="panel-what" aria-labelledby="tab-what" tabindex="0" hidden>
+          <!-- Exclusive accordion: details sharing a name close each other. -->
+          <div class="home-acc">
+            <details name="home-doctrine" open>
+              <summary>The Authority of Scripture</summary>
+              <p>The Bible, Old and New Testaments, is the inerrant, infallible Word of God and our only rule for faith and life. All of our beliefs stem from a full commitment to its authority.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>The Triune God</summary>
+              <p>There is one living and true God, eternally existing as three persons: the Father, the Son and the Holy Spirit, equal in power and glory.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>Humanity and Sin</summary>
+              <p>God created man in His own image. In Adam, humanity fell into sin, and every person is born guilty and unable to save himself.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>Salvation in Christ Alone</summary>
+              <p>Jesus Christ, the eternal Son of God, became man, lived in perfect obedience, died in the place of sinners and rose bodily from the dead. We are saved by grace alone, through faith alone, in Christ alone.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>The Church and Presbyterian Government</summary>
+              <p>Jesus Christ is the only King and Head of the church. Each congregation is overseen by elected elders, and elders from many congregations meet together in higher courts.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>Christ’s Crown Rights</summary>
+              <p>As Covenanters, we confess that Jesus Christ is King over every nation and every part of life, not only over the church.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>Worship</summary>
+              <p>The reading and exposition of the Word of God are the central focus of our worship. Our praise is the singing of the Psalms, without musical instruments.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>The Sacraments</summary>
+              <p>Baptism and the Lord’s Supper are the two sacraments Christ gave to His church. They are visible signs and seals of the gospel promises, received by faith.</p>
+            </details>
+            <details name="home-doctrine">
+              <summary>Our Standards</summary>
+              <p>We hold the Westminster Confession of Faith and the Larger and Shorter Catechisms as our subordinate standards, and the RPCNA Testimony as our continuing application of God’s Word to the world today.</p>
+            </details>
+          </div>
+          <div class="home-acc__links">
+            <a class="home-more" href="pages/scriptural-doctrine.html">Scriptural Doctrine</a>
+            <a class="home-more" href="pages/scriptural-worship.html">Scriptural Worship</a>
+            <a class="home-more" href="pages/how-can-i-be-saved.html">How Can I Be Saved?</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Worship schedule. js/home.js marks the upcoming Sunday and fills the summary card. -->
+    <!-- TODO: confirm the midday activities and the Bible study nights; they come from the design mockup, not from the church. -->
+
+    <section class="home-sched" id="worship" aria-labelledby="sched-title" data-nav-theme="light">
+      <div class="home-wrap">
+        <div class="home-sched__head">
+          <p class="home-kicker home-kicker--dark">Join Us</p>
+          <h2 id="sched-title">Worship <em>Schedule</em></h2>
+        </div>
+
+        <div class="home-next" id="home-next" aria-live="polite" hidden></div>
+
+        <div class="home-month" role="group" aria-label="Choose a Sunday of the month">
+          <button class="home-sun" type="button" aria-pressed="false" data-sunday="0">
+            <h3>1st Sunday</h3>
+            <ul class="home-rail">
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">10:00 AM</span><span class="home-rail__n">Morning Worship</span></li>
+              <li><i class="home-dot home-dot--meal"></i><span class="home-rail__t">12:00 PM</span><span class="home-rail__n">Fellowship Lunch</span></li>
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">6:00 PM</span><span class="home-rail__n">Evening Worship</span></li>
+            </ul>
+          </button>
+          <button class="home-sun" type="button" aria-pressed="false" data-sunday="1">
+            <h3>2nd Sunday</h3>
+            <ul class="home-rail">
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">10:00 AM</span><span class="home-rail__n">Morning Worship</span></li>
+              <li><i class="home-dot home-dot--class"></i><span class="home-rail__t">12:00 PM</span><span class="home-rail__n">Class Time</span></li>
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">6:00 PM</span><span class="home-rail__n">Evening Worship</span></li>
+            </ul>
+          </button>
+          <button class="home-sun" type="button" aria-pressed="false" data-sunday="2">
+            <h3>3rd Sunday</h3>
+            <ul class="home-rail">
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">10:00 AM</span><span class="home-rail__n">Morning Worship</span></li>
+              <li><i class="home-dot home-dot--class"></i><span class="home-rail__t">12:00 PM</span><span class="home-rail__n">Class Time</span></li>
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">6:00 PM</span><span class="home-rail__n">Evening Worship</span></li>
+            </ul>
+          </button>
+          <button class="home-sun" type="button" aria-pressed="false" data-sunday="3">
+            <h3>4th Sunday</h3>
+            <ul class="home-rail">
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">10:00 AM</span><span class="home-rail__n">Morning Worship</span></li>
+              <li><i class="home-dot home-dot--class"></i><span class="home-rail__t">12:00 PM</span><span class="home-rail__n">Class Time</span></li>
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">6:00 PM</span><span class="home-rail__n">Evening Worship</span></li>
+            </ul>
+          </button>
+          <button class="home-sun" type="button" aria-pressed="false" data-sunday="4">
+            <h3>5th Sunday</h3>
+            <ul class="home-rail">
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">10:00 AM</span><span class="home-rail__n">Morning Worship</span></li>
+              <li><i class="home-dot home-dot--meal"></i><span class="home-rail__t">12:00 PM</span><span class="home-rail__n">Fellowship Brunch</span></li>
+              <li><i class="home-dot home-dot--worship"></i><span class="home-rail__t">6:00 PM</span><span class="home-rail__n">Evening Worship</span></li>
+            </ul>
+            <span class="home-sun__note">Only in months with five Sundays</span>
+          </button>
+        </div>
+
+        <ul class="home-legend" aria-label="Legend">
+          <li><i class="home-dot home-dot--worship"></i> Worship service</li>
+          <li><i class="home-dot home-dot--class"></i> Class time</li>
+          <li><i class="home-dot home-dot--meal"></i> Fellowship meal</li>
+        </ul>
+
+        <div class="home-midweek">
+          <h3>Regional Bible Studies</h3>
+          <p class="home-midweek__days" aria-label="Wednesdays and Thursdays"><span>Wed</span><span>Thu</span></p>
+          <p>Small groups meet in homes across the area. <a href="pages/contact.html#get-in-touch">Contact us</a> to find a group near you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- History callout -->
+
+    <section class="home-history" aria-labelledby="history-title" data-nav-theme="dark">
+      <div class="home-wrap">
+        <h2 id="history-title">Nearly Two Centuries of <em>Faithful Witness</em></h2>
+        <p>Founded in 1834 by Scottish Covenanter settlers, Southfield Reformed Presbyterian Church is one of the oldest congregations in metropolitan Detroit. For generations, we have held fast to the Reformed faith, worshipping God according to His Word and bearing witness to the Kingship of Jesus Christ over all of life.</p>
+        <a class="home-btn" href="pages/our-history.html">Explore Our History</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-nav-theme="light">
+    <div class="site-footer__inner">
+      <div class="site-footer__about">
+        <p class="site-footer__name"><a href="index.html">Southfield Reformed Presbyterian Church</a></p>
+        <p class="site-footer__blurb">A congregation of the Reformed Presbyterian Church of North America, worshiping in Southfield since 1834.</p>
+      </div>
+      <div class="site-footer__col">
+        <h2 class="site-footer__heading">Visit</h2>
+        <address>26550 Evergreen Rd.<br>Southfield, MI 48076</address>
+        <p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=26550+Evergreen+Rd%2C+Southfield%2C+MI+48076">Get directions</a></p>
+      </div>
+      <div class="site-footer__col">
+        <h2 class="site-footer__heading">Contact</h2>
+        <p class="site-footer__email"><a href="mailto:srpcinfo@southfieldreformed.com">srpcinfo@southfieldreformed.com</a> <button class="site-footer__copy-btn" type="button" data-copy="srpcinfo@southfieldreformed.com">Copy</button></p>
+        <p><a href="tel:+12483563932">(248) 356-3932</a></p>
+        <p>Lord’s Day worship: 10:00 AM and 6:00 PM</p>
+      </div>
+      <div class="site-footer__col">
+        <h2 class="site-footer__heading">Explore</h2>
+        <ul class="site-footer__links">
+          <li><a href="pages/our-congregation.html">Our Congregation</a></li>
+          <li><a href="pages/scriptural-doctrine.html">What We Believe</a></li>
+          <li><a href="pages/our-leadership.html">Our Leadership</a></li>
+          <li><a href="https://www.sermonaudio.com/broadcasters/srpc/sermons/">Recent Sermons</a></li>
+          <li><a href="https://reformedpresbyterian.org">RPCNA website</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copy">© <span data-year>2026</span> Southfield Reformed Presbyterian Church</p>
+    </div>
+  </footer>
 
   <script src="js/site.js"></script>
   <script src="js/nav-theme.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>
