@@ -242,6 +242,11 @@
   text-align: center;
 }
 
+/* Pen illustration: only the Classic styles show it (css/style-classic-type.css). */
+.home-intro__illus {
+  display: none;
+}
+
 .home-quote {
   max-width: 30ch;
   margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);

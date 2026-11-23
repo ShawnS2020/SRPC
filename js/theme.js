@@ -1,46 +1,80 @@
-/* Color themes: applies the saved theme before the page paints, then adds a small picker in the corner.
-   Loaded in <head> on every page. Themes themselves live in css/site.css. ?theme=oxblood in a URL also sets it. */
+/* Look settings: applies the saved choices before the page paints, then adds a small picker in the corner.
+   Loaded in <head> on every page. Two independent settings:
+   - Colors (<html data-theme>): palettes live in css/site.css.
+   - Style (<html data-style>): fonts and other non-color looks. Classic Type lives in css/style-classic-type.css,
+     which only the preview pages load (index, our-denomination, scriptural-doctrine). Classic
+     ("classic-type classic") adds css/style-classic.css on top of it.
+   ?theme=oxblood and ?style=classic (or classic-type) in a URL also set them. */
 (() => {
-  const THEMES = [
-    { id: 'evergreen', name: 'Evergreen', swatches: ['#0a2521', '#1c5b53', '#a5ff9f'] },
-    { id: 'oxblood', name: 'Oxblood', swatches: ['#2b0d12', '#832732', '#f4cf9a'] },
-    { id: 'midnight', name: 'Midnight', swatches: ['#0e1b2e', '#2b5c8a', '#f0cf7a'] },
+  const SETTINGS = [
+    {
+      key: 'srpc-style',
+      attr: 'style',
+      param: 'style',
+      label: 'Style',
+      options: [
+        { id: 'modern', name: 'Modern' },
+        { id: 'classic-type', name: 'Classic Type (preview)' },
+        // Full Classic builds on Classic Type, so it sets both words: [data-style~="classic-type"] still matches.
+        { id: 'classic', name: 'Classic (preview)', value: 'classic-type classic' },
+      ],
+    },
+    {
+      key: 'srpc-theme',
+      attr: 'theme',
+      param: 'theme',
+      label: 'Colors',
+      options: [
+        { id: 'evergreen', name: 'Evergreen', swatches: ['#0a2521', '#1c5b53', '#a5ff9f'] },
+        { id: 'oxblood', name: 'Oxblood', swatches: ['#2b0d12', '#832732', '#f4cf9a'] },
+        { id: 'midnight', name: 'Midnight', swatches: ['#0e1b2e', '#2b5c8a', '#f0cf7a'] },
+        { id: 'navy', name: 'Navy', swatches: ['#102850', '#2c4f86', '#d9bf93'] },
+      ],
+    },
   ];
-  const KEY = 'srpc-theme';
   const root = document.documentElement;
-  const isTheme = (id) => THEMES.some((t) => t.id === id);
-  const load = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
-  const save = (id) => { try { localStorage.setItem(KEY, id); } catch { /* private mode: theme lasts this page only */ } };
+  const params = new URLSearchParams(location.search);
+  const load = (key) => { try { return localStorage.getItem(key); } catch { return null; } };
+  const save = (key, id) => { try { localStorage.setItem(key, id); } catch { /* private mode: lasts this page only */ } };
 
-  const fromUrl = new URLSearchParams(location.search).get('theme');
-  if (isTheme(fromUrl)) save(fromUrl);
-
-  let current = isTheme(load()) ? load() : THEMES[0].id;
-  const apply = (id) => {
-    current = id;
-    if (id === THEMES[0].id) root.removeAttribute('data-theme');
-    else root.dataset.theme = id;
+  const current = {};
+  const has = (s, id) => s.options.some((o) => o.id === id);
+  // The first option is the default and leaves the attribute off, so the plain :root rules apply.
+  const apply = (s, id) => {
+    current[s.key] = id;
+    const option = s.options.find((o) => o.id === id);
+    if (id === s.options[0].id) delete root.dataset[s.attr];
+    else root.dataset[s.attr] = option.value || id;
   };
-  apply(current);
 
-  const swatches = (t) => `<span class="site-theme__swatches" aria-hidden="true">${t.swatches.map((c) => `<i style="background:${c}"></i>`).join('')}</span>`;
+  SETTINGS.forEach((s) => {
+    const fromUrl = params.get(s.param);
+    if (has(s, fromUrl)) save(s.key, fromUrl);
+    const saved = load(s.key);
+    apply(s, has(s, saved) ? saved : s.options[0].id);
+  });
+
+  const colors = SETTINGS[1];
+  const swatches = (o) => `<span class="site-theme__swatches" aria-hidden="true">${o.swatches.map((c) => `<i style="background:${c}"></i>`).join('')}</span>`;
 
   function build() {
     const wrap = document.createElement('div');
     wrap.className = 'site-theme';
     wrap.innerHTML = `
-      <button class="site-theme__toggle" type="button" aria-expanded="false" aria-controls="site-theme-menu" aria-label="Color theme"></button>
-      <fieldset class="site-theme__menu" id="site-theme-menu" hidden>
-        <legend>Color theme</legend>
-        ${THEMES.map((t) => `<label><input type="radio" name="site-theme" value="${t.id}">${swatches(t)}${t.name}</label>`).join('')}
-      </fieldset>`;
+      <button class="site-theme__toggle" type="button" aria-expanded="false" aria-controls="site-theme-menu" aria-label="Style and colors"></button>
+      <div class="site-theme__menu" id="site-theme-menu" hidden>
+        ${SETTINGS.map((s) => `<fieldset>
+          <legend>${s.label}</legend>
+          ${s.options.map((o) => `<label><input type="radio" name="${s.key}" value="${o.id}">${o.swatches ? swatches(o) : ''}${o.name}</label>`).join('')}
+        </fieldset>`).join('')}
+      </div>`;
     document.body.append(wrap);
 
     const toggle = wrap.querySelector('.site-theme__toggle');
     const menu = wrap.querySelector('.site-theme__menu');
     const sync = () => {
-      toggle.innerHTML = swatches(THEMES.find((t) => t.id === current));
-      menu.querySelectorAll('input').forEach((input) => { input.checked = input.value === current; });
+      toggle.innerHTML = swatches(colors.options.find((o) => o.id === current[colors.key]));
+      menu.querySelectorAll('input').forEach((input) => { input.checked = input.value === current[input.name]; });
     };
     const setOpen = (on) => {
       menu.hidden = !on;
@@ -52,16 +86,20 @@
       if (!menu.hidden) menu.querySelector(':checked').focus();
     });
     menu.addEventListener('change', (e) => {
-      apply(e.target.value);
-      save(current);
+      const s = SETTINGS.find((x) => x.key === e.target.name);
+      apply(s, e.target.value);
+      save(s.key, e.target.value);
       sync();
     });
     document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !menu.hidden) { setOpen(false); toggle.focus(); }
     });
-    // Another tab changed the theme
-    addEventListener('storage', (e) => { if (e.key === KEY && isTheme(e.newValue)) { apply(e.newValue); sync(); } });
+    // Another tab changed a setting
+    addEventListener('storage', (e) => {
+      const s = SETTINGS.find((x) => x.key === e.key);
+      if (s && has(s, e.newValue)) { apply(s, e.newValue); sync(); }
+    });
 
     sync();
   }

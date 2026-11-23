@@ -33,6 +33,7 @@
   --primary-tint-4: #0d2d28;
   --secondary-soft: rgba(165, 255, 159, 0.5);
   --secondary-faint: rgba(165, 255, 159, 0.05);
+  --secondary-ink: #3f7a3a; /* the secondary hue, dark enough for text and marks on light backgrounds */
   /* Lines and tints */
   --rule: rgba(26, 21, 23, 0.2);
   --rule-light: rgba(255, 255, 255, 0.24);
@@ -53,7 +54,9 @@
 
 /* ---------- Themes ----------
    :root above is the default "Evergreen" theme. Each theme below overrides only the palette;
-   js/theme.js sets <html data-theme="..."> and provides the picker in the corner. */
+   js/theme.js sets <html data-theme="..."> and provides the picker in the corner.
+   Fonts and other non-color looks are a separate "style" setting (<html data-style="...">);
+   see css/style-classic-type.css and css/style-classic.css. Any style works with any palette. */
 
 :root[data-theme="oxblood"] {
   --oxblood: #2b0d12;
@@ -67,6 +70,7 @@
   --secondary: #f4cf9a;
   --secondary-soft: rgba(244, 207, 154, 0.5);
   --secondary-faint: rgba(244, 207, 154, 0.05);
+  --secondary-ink: #94622a;
   --primary-mid: #832732;
   --text-muted: #5b5052;
   --panel-dark: #2e1b1e;
@@ -89,6 +93,7 @@
   --secondary: #f0cf7a;
   --secondary-soft: rgba(240, 207, 122, 0.5);
   --secondary-faint: rgba(240, 207, 122, 0.05);
+  --secondary-ink: #8a6a1f;
   --primary-mid: #2b5c8a;
   --text-muted: #4c5360;
   --panel-dark: #1c2533;
@@ -100,6 +105,31 @@
   --primary-tint-4: #13233a;
   --wash: #e3eaf2;
 }
+
+:root[data-theme="navy"] {
+  /* From Jonathon's mockup (jonathons-srpc-site-claude.html): navy, cream, sand and gold. */
+  --primary: #102850;
+  --paper: #f3f2f0;
+  --stone: #ece7db; /* cream: Classic style's navbar */
+  --text: #1d1b18;
+  --secondary: #d9bf93;
+  --secondary-soft: rgba(217, 191, 147, 0.5);
+  --secondary-faint: rgba(217, 191, 147, 0.05);
+  --secondary-ink: #9a6b2f; /* the mockup's gold */
+  --primary-mid: #2c4f86;
+  --text-muted: #625d53;
+  --panel-dark: #0b1c3a;
+  --night: #060f20;
+  --night-2: #091729;
+  --primary-tint-1: #1a3768;
+  --primary-tint-2: #17325e;
+  --primary-tint-3: #152e57;
+  --primary-tint-4: #12284c;
+  --wash: #e3dccb; /* sand */
+}
+
+/* Small label above a page title (e.g. "Who We Are"). Only the Classic style shows it (css/style-classic.css). */
+.site-eyebrow { display: none; }
 
 /* ---------- Theme picker ---------- */
 
@@ -157,6 +187,19 @@
   border-radius: 0.5rem;
   background: var(--surface);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.site-theme__menu fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.site-theme__menu fieldset + fieldset {
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--rule);
 }
 
 .site-theme__menu legend {

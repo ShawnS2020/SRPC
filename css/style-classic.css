@@ -1,0 +1,421 @@
+/* Classic style (preview): the full look of Jonathon's mockup (jonathons-srpc-site-claude.html).
+   Active when js/theme.js sets <html data-style="classic-type classic">, so everything in
+   css/style-classic-type.css (type, labels, illustration) applies too; this file adds the mockup's surfaces, buttons, header and
+   section treatments. Colors still come from the palette tokens, so it follows the Colors picker
+   (Navy is the mockup's own palette).
+   Loaded by the preview pages after style-classic-type.css. */
+
+/* ---------- Shared ---------- */
+
+/* The mockup's accents are navy on light, not the mid-tone accent. */
+:root[data-style~="classic"] {
+  --text-accent: var(--primary);
+}
+
+/* No colored italic accents in headings: the mockup sets them as plain text. */
+:root[data-style~="classic"] :is(h1, h2, h3) em {
+  font-style: normal;
+  color: inherit;
+}
+
+/* ---------- Header: solid cream bar, dark text ----------
+   On the home page it starts see-through over the hero, with the church name hidden,
+   and turns solid once the page scrolls (js/site.js adds .is-scrolled). */
+
+:root[data-style~="classic"] .site-nav {
+  background-color: var(--stone);
+  box-shadow: inset 0 -1px var(--rule);
+}
+
+:root[data-style~="classic"] .site-nav :is(.site-nav__brand, .site-nav__link, .site-nav__toggle) {
+  color: var(--text);
+}
+
+:root[data-style~="classic"] .site-nav__brand {
+  transition: color 0.3s ease, opacity 0.2s ease;
+}
+
+/* Only where the hero is side by side; on phones the photo is on top, so the bar stays solid. */
+@media (min-width: 801px) {
+  :root[data-style~="classic"] .page-home .site-nav:not(.is-scrolled, .is-engaged, :hover, :focus-within) {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  :root[data-style~="classic"] .page-home .site-nav:not(.is-scrolled, .is-engaged, :hover, :focus-within) .site-nav__brand {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* ---------- Home: buttons and links ---------- */
+
+:root[data-style~="classic"] .home-btn {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+:root[data-style~="classic"] .home-btn:hover {
+  border-color: var(--panel-dark);
+  background: var(--panel-dark);
+  color: var(--text-light);
+}
+
+:root[data-style~="classic"] .home-btn--ghost {
+  background: transparent;
+  color: var(--primary);
+}
+
+:root[data-style~="classic"] .home-btn--ghost:hover {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+/* "More" links: a rule underneath instead of an underline */
+:root[data-style~="classic"] .home-more {
+  padding-bottom: 0.1rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+:root[data-style~="classic"] .home-more:hover {
+  border-bottom-width: 2px;
+}
+
+:root[data-style~="classic"] .home-more--light {
+  color: var(--text-light);
+}
+
+:root[data-style~="classic"] .home-kicker {
+  color: var(--text-muted);
+}
+
+/* ---------- Home: hero (cream, dark text) ---------- */
+
+:root[data-style~="classic"] .home-hero {
+  background: var(--stone);
+  color: var(--text);
+}
+
+/* The darkened sky only kept the navbar's white name readable; the name is hidden here. */
+:root[data-style~="classic"] .home-hero__photo::after {
+  display: none;
+}
+
+:root[data-style~="classic"] .home-hero .home-kicker {
+  display: none;
+}
+
+:root[data-style~="classic"] .home-hero h1 {
+  max-width: 22ch;
+  font-size: clamp(2rem, 3.8vw, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+:root[data-style~="classic"] .home-hero h1 em {
+  white-space: normal;
+}
+
+:root[data-style~="classic"] .home-hero__lede {
+  max-width: 40rem;
+  color: var(--text);
+}
+
+/* ---------- Home: latest sermon (navy strip, player first, a rule between) ---------- */
+
+:root[data-style~="classic"] .home-sermon {
+  background: var(--primary);
+}
+
+:root[data-style~="classic"] .home-sermon__player {
+  order: -1;
+}
+
+:root[data-style~="classic"] .home-sermon__text {
+  padding-left: clamp(2rem, 4vw, 3rem);
+  border-left: 1px solid var(--rule-light-strong);
+}
+
+:root[data-style~="classic"] .home-sermon h2 {
+  font-size: clamp(1.9rem, 2.8vw, 2.4rem);
+}
+
+:root[data-style~="classic"] .home-sermon__text p a {
+  color: var(--text-light);
+}
+
+:root[data-style~="classic"] .home-sermon__series a {
+  color: var(--text-light);
+}
+
+@media (max-width: 800px) {
+  :root[data-style~="classic"] .home-sermon__text {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* ---------- Home: welcome + tabs (white) ---------- */
+
+:root[data-style~="classic"] .home-intro {
+  padding-top: clamp(3rem, 5vw, 4rem);
+  background: var(--surface);
+}
+
+:root[data-style~="classic"] .home-quote {
+  max-width: 32ch;
+}
+
+:root[data-style~="classic"] .home-facts {
+  border-top: 0;
+  background: var(--stone);
+}
+
+/* ---------- Home: worship schedule (off-white) ---------- */
+
+:root[data-style~="classic"] .home-sched {
+  background: var(--paper);
+}
+
+:root[data-style~="classic"] .home-next {
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--primary);
+}
+
+:root[data-style~="classic"] .home-next__label {
+  color: var(--secondary-ink);
+}
+
+:root[data-style~="classic"] .home-dot--worship {
+  background: var(--primary);
+}
+
+:root[data-style~="classic"] .home-dot--class {
+  border-color: var(--primary);
+}
+
+:root[data-style~="classic"] .home-dot--meal {
+  background: var(--secondary-ink);
+}
+
+:root[data-style~="classic"] .home-rail::before {
+  background: linear-gradient(var(--secondary), var(--primary));
+}
+
+:root[data-style~="classic"] .home-sun:hover {
+  border-color: var(--primary);
+}
+
+@media (max-width: 960px) {
+  :root[data-style~="classic"] .home-rail::before {
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+  }
+}
+
+/* ---------- Home: history callout (white, dark text) ---------- */
+
+:root[data-style~="classic"] .home-history {
+  padding-block: clamp(4rem, 8vw, 6rem);
+  background: var(--surface);
+  color: var(--text);
+}
+
+:root[data-style~="classic"] .home-history h2 {
+  max-width: 22ch;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+
+:root[data-style~="classic"] .home-history p {
+  color: var(--text);
+}
+
+/* ---------- Inner pages: page header ----------
+   The mockup's inner pages open on a cream header: small label, title, intro. */
+
+:root[data-style~="classic"] .site-eyebrow {
+  display: block;
+  margin: 0 0 0.8rem;
+  font: 500 0.95rem var(--sans);
+  letter-spacing: 0.45em;
+  color: var(--text-muted);
+}
+
+/* ---------- Our Denomination ----------
+   Light sections alternating white and off-white, navy accents. The blue Covenanter
+   section stays as it is: the banner art depends on it. */
+
+:root[data-style~="classic"] .denomination-hero {
+  padding-top: calc(var(--site-nav-h) + clamp(3rem, 6vw, 4.5rem));
+  background: var(--stone);
+  color: var(--text);
+}
+
+:root[data-style~="classic"] .denomination-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+:root[data-style~="classic"] .denomination-lede {
+  color: var(--text);
+}
+
+:root[data-style~="classic"] .denomination-index {
+  border-top-color: var(--rule);
+}
+
+:root[data-style~="classic"] .denomination-index a:hover {
+  color: var(--primary);
+}
+
+/* The photo sits in a white frame, like the mockup's framed images. */
+:root[data-style~="classic"] .denomination-photo {
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+:root[data-style~="classic"] .denomination-photo figcaption {
+  color: var(--text-muted);
+}
+
+:root[data-style~="classic"] .denomination-section {
+  background: var(--surface);
+}
+
+:root[data-style~="classic"] .denomination-section h2 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+:root[data-style~="classic"] .denomination-section--wash {
+  background: var(--paper);
+}
+
+:root[data-style~="classic"] .denomination-section--blue {
+  background: var(--accent-deep);
+}
+
+/* North America: was dark, now a white section with navy figures. */
+:root[data-style~="classic"] .denomination-section--dark {
+  color: var(--text);
+}
+
+:root[data-style~="classic"] .denomination-section--dark a {
+  color: inherit;
+}
+
+:root[data-style~="classic"] .denomination-stats {
+  border-color: var(--rule);
+}
+
+:root[data-style~="classic"] .denomination-stats dt {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+:root[data-style~="classic"] .denomination-stats dd {
+  font-weight: 300;
+  color: var(--primary);
+}
+
+:root[data-style~="classic"] .denomination-institutions li {
+  border-color: var(--rule);
+  border-top: 3px solid var(--primary);
+  background: var(--paper);
+}
+
+/* ---------- Scriptural Doctrine ----------
+   Cream header with the Westminster painting framed beside the title instead of behind it;
+   the solas become numbered statements, like the mockup's What We Believe sections. */
+
+:root[data-style~="classic"] .doctrine-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 2rem clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  min-height: 0;
+  /* Side padding lines the header up with the body's 70rem column (.doctrine-wrap). */
+  padding: calc(var(--site-nav-h) + clamp(3rem, 6vw, 4.5rem)) max(var(--site-gutter), calc((100% - 70rem) / 2)) clamp(3rem, 6vw, 4.5rem);
+  background: var(--stone);
+  color: var(--text);
+}
+
+:root[data-style~="classic"] .doctrine-hero__inner {
+  order: -1;
+  width: auto;
+  margin: 0;
+}
+
+:root[data-style~="classic"] .doctrine-hero h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+:root[data-style~="classic"] .doctrine-hero .lede {
+  color: var(--text);
+}
+
+:root[data-style~="classic"] .doctrine-art {
+  position: static;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+:root[data-style~="classic"] .doctrine-art img {
+  height: auto;
+}
+
+:root[data-style~="classic"] .doctrine-art::after {
+  display: none;
+}
+
+:root[data-style~="classic"] .doctrine-art figcaption {
+  position: static;
+  max-width: none;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+:root[data-style~="classic"] .doctrine-body {
+  background: var(--surface);
+}
+
+:root[data-style~="classic"] .doctrine-solas {
+  counter-reset: sola;
+}
+
+:root[data-style~="classic"] .doctrine-solas li {
+  counter-increment: sola;
+}
+
+/* A small gold numeral above each sola, like the mockup's "Statement 1 of 8" labels */
+:root[data-style~="classic"] .doctrine-solas strong::before {
+  content: counter(sola, upper-roman);
+  display: block;
+  margin-bottom: 0.35rem;
+  font: 500 1.1rem var(--sans);
+  letter-spacing: 0.3em;
+  color: var(--secondary-ink);
+}
+
+:root[data-style~="classic"] .doctrine-solas strong {
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  :root[data-style~="classic"] .doctrine-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

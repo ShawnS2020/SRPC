@@ -16,6 +16,11 @@
       trigger(li).setAttribute('aria-expanded', String(on));
       sync();
     };
+    // .is-scrolled = page is scrolled past the top (the Classic style makes the bar solid then)
+    const onScroll = () => nav.classList.toggle('is-scrolled', scrollY > 8);
+    onScroll();
+    addEventListener('scroll', onScroll, { passive: true });
+
     const closeAll = (except) => items.forEach((i) => { if (i !== except) setOpen(i, false); });
     const closeMobile = () => {
       nav.classList.remove('is-mobile-open');
