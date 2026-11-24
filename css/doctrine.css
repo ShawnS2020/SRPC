@@ -55,7 +55,7 @@
   color: var(--text-light-muted);
 }
 
-/* ---------- Westminster Assembly painting (full-bleed background) ---------- */
+/* ---------- Header photo: Holy Bible (full-bleed background) ---------- */
 
 .doctrine-art {
   position: absolute;
@@ -69,7 +69,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 45%;
+  object-position: center;
 }
 
 /* Dark overlay keeps the white title and navbar text legible */
@@ -109,7 +109,7 @@
 /* Shown only if the image file isn't found */
 .doctrine-art.is-missing img { display: none; }
 .doctrine-art.is-missing figcaption::before {
-  content: "Image missing: add assets/images/westminster-assembly.jpg";
+  content: "Image missing: add assets/images/holy-bible-kjv-1800.jpg";
   display: block;
   margin-bottom: 0.5rem;
   color: var(--text-light);
